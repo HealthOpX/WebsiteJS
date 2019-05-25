@@ -1,0 +1,49 @@
+body {
+    color: #34394b;
+}
+.header {
+    background-color: rgb(181, 181, 181);
+    border-radius: 0%;
+    border-top: solid 15px #7c0605;
+    border-bottom: solid 15px #7c0605;
+}
+.navbar-dark {
+    background-color: #34394b !important;
+}
+.form {
+    width: 80%;
+    margin-right: 2%;
+}
+.sort {
+    width: 80%;
+    margin-top: 2%;
+}
+.footer {
+    margin-top: 5%;
+}
+hr {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+.dropdown {
+    padding-top: 2.5%;
+}
+.contact {
+    color: rgb(153,155,166);
+    font-size: 17.5px;
+}
+.contact:hover {
+    text-decoration: none;
+    color: rgb(204,205,210);
+}
+.dropdown-menu {
+    background-color: #34394b;
+    padding-left: 15%;
+ 
+}
+.drop {
+    color: rgb(153,155,166);
+}
+.drop:hover {
+    text-decoration: none;
+    color: rgb(204,205,210);
+}

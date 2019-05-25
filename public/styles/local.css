@@ -1,0 +1,37 @@
+.map-container-7{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-container-7 iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+.card {
+    margin-top: 5%;
+    padding-top: 2%;
+}
+.card-title {
+    margin-left: 2%;
+}
+.screenings {
+    width: 60%;
+    margin-top: 1%;
+}
+.screenings a {
+    text-decoration: none;
+    color: rgb(233, 236, 239);
+}
+.screenings a:hover {
+    color: white;
+}
+.screen-title {
+    padding-top: 2%;
+}
+.screening-list {
+    font-size: 0.75em;
+}

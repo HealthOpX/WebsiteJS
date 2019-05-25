@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/_common.css">
+    <link rel="stylesheet" href="styles/local.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>HealthOpX</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Booking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="local.html">Partners</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle contact" data-toggle="dropdown" href="contact.html">Contact</a>
+                <ul class="dropdown-menu">
+                    <li><a class="drop" href="contact.html#desc">About Us</a></li>
+                    <li><a class="drop" href="contact.html#faq">FAQ</a></li>
+                    <li><a class="drop" href="contact.html#team">Our Team</a></li>
+                </ul>
+            </li> 
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="signin.html"><i id='user' class='fas fa-user fa-2x'></i></a>
+            </li>  
+        </ul>
+    </div>  
+</nav>
+
+<div class="body-container container" style="margin-top:30px">
+    <section class="section">
+        <h2>Explore Our Partner's Locations</h2>
+        <div class="card">
+            <div class="card-title" id="#FEMH">
+                <h2>Far Eastern Memorial Hospital</h2>
+                <h4>Mission Statement</h4>
+                <p>Continuing improvement in medical quality and contributing to high-quality medical service to society.</p>
+            </div>
+            <div class="card-body">
+                <div id="map-container-google-12" class="z-depth-1-half map-container-7" style="height: 200px">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.091902863305!2d121.45047431506097!3d24.99699294592789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a8023409b0e5%3A0xd2ad065b40777c37!2sFar+Eastern+Memorial+Hospital!5e0!3m2!1sen!2sus!4v1557360787121!5m2!1sen!2sus" 
+                    width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="row"></div>
+            </div>
+            <div class="card-footer text-center">
+                <h3>Health screenings offered at FEMH</h3>
+                <p>Click for more information</p>
+                <div class="btn btn-dark screenings">
+                    <a href="#malePackage1" data-toggle="collapse"><h5 class="screen-title">Male Health Screening Package 1</h5></a>
+                    <div id="malePackage1" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic Examinations, Tress Free Endoscopic Examination, Panendoscopy, Colonofiberscopy, Low-dose chest CT, 
+                            Abdominal Ultrasonography, Thyroid Ultrasound, Heart Ultrasound, Prostate ultrasound, Urologist consultation, 
+                            Otolaryngologist consultation, Nasophargyngoscopy, Opthalmologist consultation, report interpretation service</p>
+                    </div>
+                </div>
+                <div class="btn btn-dark screenings">
+                    <a href="#malePackage2" data-toggle="collapse"><h5 class="screen-title">Male Health Screening Package 2</h5></a>
+                    <div id="malePackage2" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic Examinations, Low-dose chest CT, Positron Emission Tomography, 
+                            Cancer Screening, Abdominal Ultrasonography, Thyroid Ultrasound, Prostate Ultrasound, 
+                            Report interpretation Service</p>
+                    </div>
+                </div>
+                <div class="btn btn-dark screenings">
+                    <a href="#malePackage3" data-toggle="collapse"><h5 class="screen-title">Male Health Screening Package 3</h5></a>
+                    <div id="malePackage3" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic examinations, Tress Free Endoscopic Examination, Panendoscopy, Colonofiberscopy, 
+                            Computer tomography coronary angiography, Low-dose chest CT, Brain Stroke Screening, Whole spine Screening, 
+                            MRI Pelvic Examination, PET/CT Scan, Abdominal Ultrasonography, Thyroid Ultrasound, Heart Ultrasound, 
+                            Carotid ultrasound, Prostate Ultrasound, Bone mineral density test (lumbar vertebrae), testosterone check, 
+                            urologist consultation, otolaryngologist consultation, Nasopharyngoscopy, Opthalmologist consultation, 
+                            report interpretation service.</p>
+                    </div>
+                </div>
+                <div class="btn btn-dark screenings">
+                    <a href="#femalePackage1" data-toggle="collapse"><h5 class="screen-title">Female Health Screening Package 1</h5></a>
+                    <div id="femalePackage1" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic Examinations, Tress Free Endoscopic Examination, Panendoscopy, 
+                            Colonofiberscopy, Low-dose chest CT, Abdominal Ultrasonography, Thyroid Ultrasound, Heart Ultrasound, 
+                            Gynecology Ultrasound, Mammography, Thinprep Pap, HPV test, Gynecologist consultation, 
+                            Otolaryngologist consultation, Nasopharyngoscopy, Opthalmologist consultation, report interpretation service</p>
+                    </div>
+                </div>
+                <div class="btn btn-dark screenings">
+                    <a href="#femalePackage2" data-toggle="collapse"><h5 class="screen-title">Female Health Screening Package 2</h5></a>
+                    <div id="femalePackage2" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic Examinations, Low-dose chest CT, Positron Emission Tomography, 
+                            Cancer Screening, Abdominal Ultrasonography, Thyroid Ultrasound, Gynecology Ultrasound, Mammography, 
+                            Thinprep Pap, HPV test, Report Interpretation Service </p>
+                    </div>
+                </div>
+                <div class="btn btn-dark screenings">
+                    <a href="#femalePackage3" data-toggle="collapse"><h5 class="screen-title">Female Health Screening Package 3</h5></a>
+                    <div id="femalePackage3" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic examinations, Tress Free Endoscopic Examination, Panendoscopy, Colonofiberscopy, 
+                            Computer tomography coronary angiography, Low-dose chest CT, Brain Stroke Screening, Whole spine Screening, 
+                            MRI Pelvic Examination, PET/CT Scan, Abdominal Ultrasonography, Thyroid Ultrasound, Heart Ultrasound, 
+                            Carotid ultrasound, Mammography, bone mineral density test, Thinprep Pap, HPV test, 
+                            Cervical Methylation gene detection, E2 & FSH hormone detections, Gynecologist consultation, 
+                            otolaryngologist consultation, Nasopharyngoscopy, Opthalmologist consultation, Report Interpretation Service.</p>
+                    </div>
+                </div>
+                <div class="btn btn-dark screenings">
+                    <a href="#completeRoutine1" data-toggle="collapse"><h5 class="screen-title">Complete Routine Inspection Package</h5></a>
+                    <div id="completeRoutine1" class="collapse">
+                        <h6>Includes the following screenings:</h6>
+                        <p class="screening-list">Basic Examinations, Physical Examination & Report Interpretation, Blood Biochemical, 
+                            Hepatobiliary Function, Assessment of renal function, Electrolytes, Blood Glucose Determination, Blood Lipid, 
+                            Thyroid Function, Cancer Screening, Autoimmune Diseases and Allergy Test, Urine Examination, Stool Examination, 
+                            Electrocardiogram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <h2>Hanyang University Hanmaeun Changwon Hospital</h2>
+            </div>
+            <div class="card-body">
+                <div id="map-container-google-12" class="z-depth-1-half map-container-7" style="height: 200px">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.8052399719995!2d127.04177461531062!3d37.55965213227997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4a6406bac95%3A0x1994f7522fe4cdc0!2sHanyang+University+Hospital.!5e0!3m2!1sen!2sus!4v1557360564343!5m2!1sen!2sus" 
+                    width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
+                <h2>Sunflower Dental Clinic</h2>
+            </div>
+            <div class="card-body">
+                <div id="map-container-google-12" class="z-depth-1-half map-container-7" style="height: 200px">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.7659268386656!2d121.51702331506264!3d25.109783741403163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ae9222d85347%3A0xbf3f0a4fe6fc5cc4!2sSunflower+Dental+Clinic!5e0!3m2!1sen!2sus!4v1557360666819!5m2!1sen!2sus" 
+                    width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="row"></div>
+            </div>
+        </div>
+    </section>    
+</div>
+
+<div class="jumbotron text-center footer" style="margin-bottom:0">
+    <hr>
+    <p>www.Healthopx.com</p></a>
+</div>
+
+</body>
+<script src="js/booking.js" async></script>
+
+
+</html>
+

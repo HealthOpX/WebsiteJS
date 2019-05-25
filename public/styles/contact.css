@@ -1,0 +1,23 @@
+.person {
+	border: 10px solid #34394b;
+	margin-bottom: 25px;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.team {
+    margin-top: 5%;
+    padding-top: 2%;
+}
+.team-info {
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-right: 5%;
+}
+
+.icons i {
+    color: #7c0605;
+}
+.name, .message, .email {
+    border: #34394b solid 1px;
+}

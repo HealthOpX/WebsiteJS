@@ -1,0 +1,47 @@
+
+body {
+  background: rgb(120,7,8);
+  background: linear-gradient(to right, rgb(120,7,8), rgb(79, 89, 116));
+  padding-top: 10%;
+  padding-left: 15%;  
+}
+.card-signin {
+  border: 0;
+  box-shadow: 0 1rem 1rem 0 rgba(0, 0, 0, 0.4);
+  background-color: white;
+  width: 800px;
+  height: 25%;
+  font-size: 20px;
+}
+img {
+    width: 60%;
+    margin-left: 20%;
+}
+.card-signin .card-title {
+  font-weight: 300;
+  font-size: 30px;
+}
+.card-signin .card-body {
+  padding: 2rem;
+}
+.form-signin {
+  width: 100%;
+}
+.form-signin .btn {
+  font-size: 100%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+  background-color: rgb(120,7,8);
+  border: 0;
+}
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}

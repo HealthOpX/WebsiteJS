@@ -1,0 +1,52 @@
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none; 
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  .step.finish {
+    background-color: #4CAF50;
+  }
+
+  .btn {
+      padding: 5px 40px;
+  }
+
+  .tab {
+    display: none;
+  }
+
+  .form-group-check {
+    margin: auto; 
+    text-align: left; 
+    width: 200px;
+    font-size: 1.25em;
+  }
+
+  .form-check-input {
+      width: 15px;
+      height: 15px;
+  }
+  .card {
+    margin-top: 2%;
+    background-color: rgb(221, 221, 221);
+  }
+  .card-footer {
+    margin-top: 3%;
+  }
+  .form-check {
+    padding-left: 8%;
+  }

@@ -1,0 +1,95 @@
+.homepage {
+    padding: 2% 15% 5% 15%;
+}
+.input {
+    padding-top: 5%;
+}
+.modal {
+    /* right: 50%; */
+    left: 25%;
+    width: 25%;
+    font-size: 2em;
+    /* padding: 5% 5% 5% */
+}
+.modal-content {
+    padding: 2% 5% 2% 5%;
+
+}
+.rounded {
+    border-radius: 2em;
+}
+.results {
+    margin-top: 5%;
+    padding-top: 5%;
+    /* overflow: auto; */
+    overflow-y: scroll;
+    height: 950px;
+}
+hr {
+    /* border-width: 1px; */
+    border-color: rgba(0, 0, 0, 0.2);
+}
+.thumbnail img {
+    margin-bottom: 2%;
+}
+.learn {
+    margin-left: 45%;
+    margin-top: 2%;
+    right: 3em;
+}
+.thumbnail {
+    border: rgb(79, 89, 116) solid 4px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0 2% 0% 2%;
+    width: auto;
+    height: 15%;
+} 
+.thumbnail .name {
+    width: 75%;
+}
+.stay {
+    right: 8%;
+    font-size: 1.5em;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    width: 5em;
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.thumbnail i {
+    font-size: 4em;
+}
+.thumbnail p {
+    padding: 2% 5% 0% 5%;
+    margin-top: 15px;
+    color: #555;
+}
+.thumbnail h3{
+    padding-left: 2%;
+    margin-top: 0%;
+    width: 70%;
+}
+.thumbnail .cost {
+    margin-left: 20%;
+    margin-bottom: 25%;
+    font-size: 3em;
+}
+.thumbnail h4{
+    padding-left: 2%;
+    margin-top: 0%;
+}
+.thumbnail button {
+    margin-right: 5%;
+}
+.thumbnail:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.38);
+}
+.thumbnail button {
+    background-color: rgb(120,7,8);
+    color: white;
+    font-size: 2em;
+}
+.select {
+    margin-top: 5%;
+}
