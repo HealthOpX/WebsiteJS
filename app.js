@@ -1,10 +1,12 @@
-var express = require('express')
+  var express = require('express')
   , http = require('http')
   , path = require('path')
-  , mysql = require('mysql');
+  , mysql = require('mysql')
+  , aws = require('aws-sdk');
 
 var app = express();
 var publicDir = require('path').join(__dirname,'/public');
+aws.config.update({region: 'us-east-2	'})
 
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
@@ -63,8 +65,59 @@ app.get('/index.html', function (req, res)
   res.render("index.html" );
 })
 
-var port = process.env.PORT || 3000;
+app.get('/email', function (req, res) 
+{
+  // Create sendEmail params 
+  var params = 
+  {
+    Destination: { /* required */
+      CcAddresses: [
+        'EMAIL_ADDRESS',
+        /* more items */
+      ],
+      ToAddresses: [
+        'EMAIL_ADDRESS',
+        /* more items */
+      ]
+    },
+    Message: { /* required */
+      Body: { /* required */
+        Html: {
+        Charset: "UTF-8",
+        Data: "HTML_FORMAT_BODY"
+        },
+        Text: {
+        Charset: "UTF-8",
+        Data: "TEXT_FORMAT_BODY"
+        }
+      },
+      Subject: {
+        Charset: 'UTF-8',
+        Data: 'Test email'
+      }
+      },
+    Source: 'SENDER_EMAIL_ADDRESS', /* required */
+    ReplyToAddresses: [
+      'EMAIL_ADDRESS',
+      /* more items */
+    ],
+};
 
+// Create the promise and SES service object
+var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+
+// Handle promise's fulfilled/rejected states
+sendPromise.then(
+  function(data) {
+    console.log(data.MessageId);
+  }).catch(
+    function(err) {
+    console.error(err, err.stack);
+  });  
+})
+
+
+var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });
