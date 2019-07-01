@@ -19,18 +19,23 @@
                             <img src="assets/Logo.png">
                             <h5 class="card-title text-center">Sign In</h5>
                             <hr>
-                            <form class="form-signin" action="patient-profile.html">
+                            <form class="form-signin" action="/signin" method='post'>
                                 <div class="form-label-group">
                                     <label for="inputUsername">Username</label>
-                                    <input type="text" id="inputUsername" class="form-control" required autofocus>
+                                    <input type="text" id="inputUsername" name='name' class="form-control" required autofocus>
                                 </div>
                                 <br>
                                 <div class="form-label-group">
                                     <label for="inputPassword">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control" required>
+                                    <input type="password" id="inputPassword" name='pw' class="form-control" required>
                                 </div>
                                 <br>
+                                <% if (rows == 0) { %>
+                                    <div class="alert alert-danger col-sm-12"><%= message %></div>
+                                <% } %>
                                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                                <h3 style="text-align:center;">Not a memeber? <a class="nav-link active"></a></h3>
+                                <h3 style="text-align:center;"><a class="nav-link active" href="register.html" >Sign Up!</a></h3>
                                 <hr>
                             </form>
                         </div>

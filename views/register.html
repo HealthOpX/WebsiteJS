@@ -47,12 +47,15 @@
 
 <div class="body-container container" style="margin-top:30px">
     <section class="section">
-            <form style="text-align: center;" action="/auth" method="post"> 
+            <form style="text-align: center;" action="/signup" method="post"> 
                 <input type="text" class="form-control" name="fname" placeholder="First name" required><br>
                 <input type="text" class="form-control" name="lname" placeholder="Last name" required><br>
                 <input type="email" class="form-control" name="email" placeholder="Email" required><br>
                 <input type="password" class="form-control" name="pass" placeholder="Password" required><br>
                 <button type="submit" class="btn btn-primary">Register!</button>
+                <% if (rows > 0) { %>
+                    <div class="alert alert-danger col-sm-12"><%= message %></div>
+                <% } %>
             </form>
     </section>
 </div>

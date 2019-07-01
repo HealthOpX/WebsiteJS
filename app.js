@@ -14,7 +14,7 @@ var publicDir = require('path').join(__dirname,'/public');
 aws.config.update({region: 'us-east-2	'})
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
@@ -56,7 +56,9 @@ app.get('/contact.html', function (req, res)
 //Code to return signin page!
 app.get('/signin.html', function (req, res) 
 {
-  res.render("signin.html" );
+  var rows = 1;
+  var message = '';
+  res.render("signin.html", {rows: rows, message: message});
 });
 //Code to return regestration form page!
 app.get('/regform.html', function (req, res) 
@@ -91,29 +93,117 @@ app.get('/index.html', function (req, res)
 //Code to return register page!
 app.get('/register.html', function (req, res) 
 {
-  res.render("register.html" );
+  var message='';
+  var rows = 0;
+  console.log('message: ', message);
+  console.log('rows: ', rows);
+  res.render("register.html", {message: message, rows: rows} );
 });
 
-
-// Function to register new user!
-app.post('/auth', function(request, response)
+// Function to sign up new user!
+// If user exists, will prompt user to enter new email
+// If user is new, will be redirected into the sign in page
+app.post('/signup', function(req, res)
 {
+  console.log(req.body);
+  console.log();
+  console.log(res.body);
+
+
   // Variables that to access html form input!
-  var f_name = request.body.fname;
-  var l_name = request.body.lname;
-  var email = request.body.email;
-  var pw = request.body.pass;
+  var f_name = req.body.fname;
+  var l_name = req.body.lname;
+  var email = req.body.email;
+  var pw = req.body.pass;
 
   var query_str = 'SELECT * FROM user_basic WHERE user_email = ?';
 
   connection.query(query_str, [email], function(error, results, fields)
   {
-    if(error) throw error;
+    if(error) 
+    {
+      console.log("Error during database query. (/signup)")
+      throw error;
+    }
 
-    console.log(results.length);
+    // Debugging to hit the DB and get users with similar emails
+    console.log("Number of rows for query: " + results.length);
+    console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
+
+    if(results.length == 0)
+    {
+      var insert_qry = 'INSERT INTO user_basic (user_email, user_firstname, user_lastname, user_pw) VALUES (?, ?, ?, ?)';
+      connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
+      {
+        if(error)
+        {
+          console.log("Error adding new user to table");
+          throw error;
+        }
+
+        console.log(f_name + " " + l_name + " has been successfully added!");    
+        res.render('signin.html');
+      });
+    }
+
+    else
+    {
+      console.log(email + " already exists as a user!");   
+      res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
+    }
   });
 });
 
+app.post('/signin', function(req, res)
+{
+  console.log('hello world');
+  console.log(req.body);
+  console.log();
+  console.log(res.body);
+
+
+  var name = req.body.name;
+  var pw = req.body.pw;
+  var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
+
+  connection.query(query_str, [name], function(error, results, fields)
+  {
+    if(error)
+    {
+      console.log("Error during db query. (/signin)");
+      throw error;
+    }
+
+    console.log("Number of rows for query: ", results.length);
+    console.log("Results: ");
+    console.log(results);
+    console.log(results[0]);
+    console.log(results[0]['user_pw']);
+    console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
+
+    if(results.length == 0)
+    {
+      console.log("No accounts were found with corresponding email!");
+      res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
+      return; 
+    }
+
+    if(pw == results[0]['user_pw'])
+    {
+      console.log('Succesful login!');
+      res.render('patient-profile.html');
+      return;
+    }
+
+    else
+    {
+      console.log("Credentials not found, please try again!");
+      res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
+      return;
+    }
+  });
+
+});
 
 app.get('/email', function (req, res) 
 {
