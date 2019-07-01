@@ -4,8 +4,8 @@
   var express = require('express')
     , http = require('http')
     , path = require('path')
-    , mysql = require('mysql')
     , aws = require('aws-sdk')
+    , mysql = require('mysql')
     , bodyParser = require('body-parser');
 
 // Express instance managing the backend!
@@ -14,7 +14,7 @@ var publicDir = require('path').join(__dirname,'/public');
 aws.config.update({region: 'us-east-2	'})
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
@@ -41,7 +41,7 @@ connection.connect(function(err) {
 //Code to return defult main page!
 app.get('/', function (req, res) 
 {
-  
+
    res.render("index.html" );
 });
 //Code to return local page!
