@@ -5,7 +5,7 @@
     , http = require('http')
     , path = require('path')
     , aws = require('aws-sdk')
-    // , mysql = require('mysql')
+    , mysql = require('mysql')
     , bodyParser = require('body-parser');
 
 // Express instance managing the backend!
