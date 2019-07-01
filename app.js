@@ -41,6 +41,7 @@ connection.connect(function(err) {
 //Code to return defult main page!
 app.get('/', function (req, res) 
 {
+  
    res.render("index.html" );
 });
 //Code to return local page!
