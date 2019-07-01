@@ -20,14 +20,14 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 // Connection to the database!
-// var connection = mysql.createConnection(
-// {
-//   host     : "hox.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
-//   user     : "healthopx",
-//   password : "minorities4excellence",
-//   port     : "3306",
-//   database : "healthopx"
-// });
+var connection = mysql.createConnection(
+{
+  host     : "hox.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
+  user     : "healthopx",
+  password : "minorities4excellence",
+  port     : "3306",
+  database : "healthopx"
+});
 
 // connection.connect(function(err) {
 //   if (err) {
