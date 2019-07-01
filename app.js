@@ -5,7 +5,7 @@
     , http = require('http')
     , path = require('path')
     , aws = require('aws-sdk')
-    , mysql = require('mysql')
+    // , mysql = require('mysql')
     , bodyParser = require('body-parser');
 
 // Express instance managing the backend!
@@ -20,23 +20,23 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 // Connection to the database!
-var connection = mysql.createConnection(
-{
-  host     : "hox.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
-  user     : "healthopx",
-  password : "minorities4excellence",
-  port     : "3306",
-  database : "healthopx"
-});
+// var connection = mysql.createConnection(
+// {
+//   host     : "hox.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
+//   user     : "healthopx",
+//   password : "minorities4excellence",
+//   port     : "3306",
+//   database : "healthopx"
+// });
 
-connection.connect(function(err) {
-  if (err) {
-    console.error('Database connection failed: ' + err.stack);
-    return;
-  }
+// connection.connect(function(err) {
+//   if (err) {
+//     console.error('Database connection failed: ' + err.stack);
+//     return;
+//   }
 
-  console.log('Connected to database.');
-});
+//   console.log('Connected to database.');
+// });
 
 //Code to return defult main page!
 app.get('/', function (req, res) 
@@ -104,107 +104,107 @@ app.get('/register.html', function (req, res)
 // Function to sign up new user!
 // If user exists, will prompt user to enter new email
 // If user is new, will be redirected into the sign in page
-app.post('/signup', function(req, res)
-{
-  console.log(req.body);
-  console.log();
-  console.log(res.body);
+// app.post('/signup', function(req, res)
+// {
+//   console.log(req.body);
+//   console.log();
+//   console.log(res.body);
 
 
-  // Variables that to access html form input!
-  var f_name = req.body.fname;
-  var l_name = req.body.lname;
-  var email = req.body.email;
-  var pw = req.body.pass;
+//   // Variables that to access html form input!
+//   var f_name = req.body.fname;
+//   var l_name = req.body.lname;
+//   var email = req.body.email;
+//   var pw = req.body.pass;
 
-  var query_str = 'SELECT * FROM user_basic WHERE user_email = ?';
+//   var query_str = 'SELECT * FROM user_basic WHERE user_email = ?';
 
-  connection.query(query_str, [email], function(error, results, fields)
-  {
-    if(error) 
-    {
-      console.log("Error during database query. (/signup)")
-      throw error;
-    }
+//   connection.query(query_str, [email], function(error, results, fields)
+//   {
+//     if(error) 
+//     {
+//       console.log("Error during database query. (/signup)")
+//       throw error;
+//     }
 
-    // Debugging to hit the DB and get users with similar emails
-    console.log("Number of rows for query: " + results.length);
-    console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
+//     // Debugging to hit the DB and get users with similar emails
+//     console.log("Number of rows for query: " + results.length);
+//     console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
 
-    if(results.length == 0)
-    {
-      var insert_qry = 'INSERT INTO user_basic (user_email, user_firstname, user_lastname, user_pw) VALUES (?, ?, ?, ?)';
-      connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
-      {
-        if(error)
-        {
-          console.log("Error adding new user to table");
-          throw error;
-        }
+//     if(results.length == 0)
+//     {
+//       var insert_qry = 'INSERT INTO user_basic (user_email, user_firstname, user_lastname, user_pw) VALUES (?, ?, ?, ?)';
+//       connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
+//       {
+//         if(error)
+//         {
+//           console.log("Error adding new user to table");
+//           throw error;
+//         }
 
-        console.log(f_name + " " + l_name + " has been successfully added!");    
-        res.render('signin.html');
-      });
-    }
+//         console.log(f_name + " " + l_name + " has been successfully added!");    
+//         res.render('signin.html');
+//       });
+//     }
 
-    else
-    {
-      console.log(email + " already exists as a user!");   
-      res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
-    }
-  });
-});
+//     else
+//     {
+//       console.log(email + " already exists as a user!");   
+//       res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
+//     }
+//   });
+// });
 
-app.post('/signin', function(req, res)
-{
-  console.log('hello world');
-  console.log(req.body);
-  console.log();
-  console.log(res.body);
+// app.post('/signin', function(req, res)
+// {
+//   console.log('hello world');
+//   console.log(req.body);
+//   console.log();
+//   console.log(res.body);
 
 
-  var name = req.body.name;
-  var pw = req.body.pw;
-  var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
+//   var name = req.body.name;
+//   var pw = req.body.pw;
+//   var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
 
-  connection.query(query_str, [name], function(error, results, fields)
-  {
-    if(error)
-    {
-      console.log("Error during db query. (/signin)");
-      throw error;
-    }
+//   connection.query(query_str, [name], function(error, results, fields)
+//   {
+//     if(error)
+//     {
+//       console.log("Error during db query. (/signin)");
+//       throw error;
+//     }
 
-    console.log("Number of rows for query: ", results.length);
-    console.log("Results: ");
-    console.log(results);
-    console.log(results[0]);
-    console.log(results[0]['user_pw']);
-    console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
+//     console.log("Number of rows for query: ", results.length);
+//     console.log("Results: ");
+//     console.log(results);
+//     console.log(results[0]);
+//     console.log(results[0]['user_pw']);
+//     console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
 
-    if(results.length == 0)
-    {
-      console.log("No accounts were found with corresponding email!");
-      res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
-      return; 
-    }
+//     if(results.length == 0)
+//     {
+//       console.log("No accounts were found with corresponding email!");
+//       res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
+//       return; 
+//     }
 
-    if(pw == results[0]['user_pw'])
-    {
-      console.log('Succesful login!');
-      res.render('patient-profile.html');
-      return;
-    }
+//     if(pw == results[0]['user_pw'])
+//     {
+//       console.log('Succesful login!');
+//       res.render('patient-profile.html');
+//       return;
+//     }
 
-    else
-    {
-      console.log("Credentials not found, please try again!");
-      res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
-      return;
-    }
-  });
+//     else
+//     {
+//       console.log("Credentials not found, please try again!");
+//       res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
+//       return;
+//     }
+//   });
 
-});
+// });
 
 app.get('/email', function (req, res) 
 {
