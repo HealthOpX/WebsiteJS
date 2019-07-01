@@ -29,14 +29,14 @@ var connection = mysql.createConnection(
   database : "healthopx"
 });
 
-// connection.connect(function(err) {
-//   if (err) {
-//     console.error('Database connection failed: ' + err.stack);
-//     return;
-//   }
+connection.connect(function(err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
 
-//   console.log('Connected to database.');
-// });
+  console.log('Connected to database.');
+});
 
 //Code to return defult main page!
 app.get('/', function (req, res) 
