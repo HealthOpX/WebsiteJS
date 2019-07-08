@@ -22,11 +22,10 @@ app.use(bodyParser.json());
 // Connection to the database!
 var connection = mysql.createConnection(
 {
-  host     : "aa4ue4rcwwjj6o.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
-  user     : "healthopx",
-  password : "minorities4excellence",
-  port     : "3306",
-  database : "aa4ue4rcwwjj6o"
+  host     : process.env.RDS_HOSTNAME,
+  user     : process.env.RDS_USERNAME,
+  password : process.env.PASSWORD,
+  port     : process.env.PORT,
 });
 
 connection.connect(function(err) {
