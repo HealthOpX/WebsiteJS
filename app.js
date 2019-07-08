@@ -22,16 +22,17 @@ app.use(bodyParser.json());
 // Connection to the database!
 var connection = mysql.createConnection(
 {
-  host     : "hox.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
+  host     : "aa4ue4rcwwjj6o.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
   user     : "healthopx",
   password : "minorities4excellence",
   port     : "3306",
-  database : "healthopx"
+  database : "aa4ue4rcwwjj6o"
 });
 
 connection.connect(function(err) {
   if (err) {
     console.error('Database connection failed: ' + err.stack);
+    res.render("local.html");
     return;
   }
 
@@ -167,42 +168,42 @@ app.post('/signin', function(req, res)
   var pw = req.body.pw;
   var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
 
-  connection.query(query_str, [name], function(error, results, fields)
-  {
-    if(error)
-    {
-      console.log("Error during db query. (/signin)");
-      throw error;
-    }
+  // connection.query(query_str, [name], function(error, results, fields)
+  // {
+  //   if(error)
+  //   {
+  //     console.log("Error during db query. (/signin)");
+  //     throw error;
+  //   }
 
-    console.log("Number of rows for query: ", results.length);
-    console.log("Results: ");
-    console.log(results);
-    console.log(results[0]);
-    console.log(results[0]['user_pw']);
-    console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
+  //   console.log("Number of rows for query: ", results.length);
+  //   console.log("Results: ");
+  //   console.log(results);
+  //   console.log(results[0]);
+  //   console.log(results[0]['user_pw']);
+  //   console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
 
-    if(results.length == 0)
-    {
-      console.log("No accounts were found with corresponding email!");
-      res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
-      return; 
-    }
+  //   if(results.length == 0)
+  //   {
+  //     console.log("No accounts were found with corresponding email!");
+  //     res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
+  //     return; 
+  //   }
 
-    if(pw == results[0]['user_pw'])
-    {
-      console.log('Succesful login!');
-      res.render('patient-profile.html');
-      return;
-    }
+  //   if(pw == results[0]['user_pw'])
+  //   {
+  //     console.log('Succesful login!');
+  //     res.render('patient-profile.html');
+  //     return;
+  //   }
 
-    else
-    {
-      console.log("Credentials not found, please try again!");
-      res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
-      return;
-    }
-  });
+  //   else
+  //   {
+  //     console.log("Credentials not found, please try again!");
+  //     res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
+  //     return;
+  //   }
+  // });
 });
 
 app.get('/email', function (req, res) 
