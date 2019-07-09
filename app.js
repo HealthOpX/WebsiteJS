@@ -116,40 +116,40 @@ app.post('/signup', function(req, res)
 
   var query_str = 'SELECT * FROM users WHERE user_email = ?';
 
-  connection.query(query_str, [email], function(error, results, fields)
-  {
-    if(error) 
-    {
-      console.log("Error during database query. (/signup)")
-      throw error;
-    }
+  // connection.query(query_str, [email], function(error, results, fields)
+  // {
+  //   if(error) 
+  //   {
+  //     console.log("Error during database query. (/signup)")
+  //     throw error;
+  //   }
 
-    // Debugging to hit the DB and get users with similar emails
-    console.log("Number of rows for query: " + results.length);
-    console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
+  //   // Debugging to hit the DB and get users with similar emails
+  //   console.log("Number of rows for query: " + results.length);
+  //   console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
 
-    if(results.length == 0)
-    {
-      var insert_qry = 'INSERT INTO users (user_email, user_fname, user_lname, user_pw) VALUES (?, ?, ?, ?)';
-      connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
-      {
-        if(error)
-        {
-          console.log("Error adding new user to table");
-          throw error;
-        }
+  //   if(results.length == 0)
+  //   {
+  //     var insert_qry = 'INSERT INTO users (user_email, user_fname, user_lname, user_pw) VALUES (?, ?, ?, ?)';
+  //     connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
+  //     {
+  //       if(error)
+  //       {
+  //         console.log("Error adding new user to table");
+  //         throw error;
+  //       }
 
-        console.log(f_name + " " + l_name + " has been successfully added!");    
-        res.render('signin.html');
-      });
-    }
+  //       console.log(f_name + " " + l_name + " has been successfully added!");    
+  //       res.render('signin.html');
+  //     });
+  //   }
 
-    else
-    {
-      console.log(email + " already exists as a user!");   
-      res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
-    }
-  });
+  //   else
+  //   {
+  //     console.log(email + " already exists as a user!");   
+  //     res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
+  //   }
+  // });
 });
 
 // app.post('/signin', function(req, res)
@@ -254,7 +254,7 @@ sendPromise.then(
 });
 
 
-var port = 3306;
+var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });
