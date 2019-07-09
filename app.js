@@ -254,7 +254,7 @@ sendPromise.then(
 });
 
 
-var port = process.env.PORT || 3000;
+var port = 3306;
 var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });
