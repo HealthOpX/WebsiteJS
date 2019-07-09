@@ -114,7 +114,7 @@ app.post('/signup', function(req, res)
   var email = req.body.email;
   var pw = req.body.pass;
 
-  var query_str = 'SELECT * FROM users WHERE user_email = ?';
+  // var query_str = 'SELECT * FROM users WHERE user_email = ?';
 
   // connection.query(query_str, [email], function(error, results, fields)
   // {
