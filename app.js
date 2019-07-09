@@ -200,7 +200,7 @@ app.post('/signup', function(req, res)
   //     return;
   //   }
   // });
-});
+// });
 
 app.get('/email', function (req, res) 
 {
