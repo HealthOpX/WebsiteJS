@@ -1,12 +1,11 @@
   //< General app to handle all the back end of the site!
   
-  
-  var express = require('express')
-    , http = require('http')
-    , path = require('path')
-    , aws = require('aws-sdk')
-    , mysql = require('mysql')
-    , bodyParser = require('body-parser');
+var express = require('express')
+  , http = require('http')
+  , path = require('path')
+  , aws = require('aws-sdk')
+  , mysql = require('mysql')
+  , bodyParser = require('body-parser');
 
 // Express instance managing the backend!
 var app = express();
@@ -102,68 +101,68 @@ app.get('/register.html', function (req, res)
 // Function to sign up new user!
 // If user exists, will prompt user to enter new email
 // If user is new, will be redirected into the sign in page
-// app.post('/signup', function(req, res)
+app.post('/signup', function(req, res)
+{
+  // Output stuff for local debugging if possible
+  console.log(req.body);
+  console.log();
+  console.log(res.body);
+
+  // Variables that to access html form input!
+  var f_name = req.body.fname;
+  var l_name = req.body.lname;
+  var email = req.body.email;
+  var pw = req.body.pass;
+
+  var query_str = 'SELECT * FROM users WHERE user_email = ?';
+
+  connection.query(query_str, [email], function(error, results, fields)
+  {
+    if(error) 
+    {
+      console.log("Error during database query. (/signup)")
+      throw error;
+    }
+
+    // Debugging to hit the DB and get users with similar emails
+    console.log("Number of rows for query: " + results.length);
+    console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
+
+    if(results.length == 0)
+    {
+      var insert_qry = 'INSERT INTO users (user_email, user_fname, user_lname, user_pw) VALUES (?, ?, ?, ?)';
+      connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
+      {
+        if(error)
+        {
+          console.log("Error adding new user to table");
+          throw error;
+        }
+
+        console.log(f_name + " " + l_name + " has been successfully added!");    
+        res.render('signin.html');
+      });
+    }
+
+    else
+    {
+      console.log(email + " already exists as a user!");   
+      res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
+    }
+  });
+});
+
+// app.post('/signin', function(req, res)
 // {
+//   console.log('hello world');
 //   console.log(req.body);
 //   console.log();
 //   console.log(res.body);
 
 
-//   // Variables that to access html form input!
-//   var f_name = req.body.fname;
-//   var l_name = req.body.lname;
-//   var email = req.body.email;
-//   var pw = req.body.pass;
-
-//   var query_str = 'SELECT * FROM user_basic WHERE user_email = ?';
-
-//   connection.query(query_str, [email], function(error, results, fields)
-//   {
-//     if(error) 
-//     {
-//       console.log("Error during database query. (/signup)")
-//       throw error;
-//     }
-
-//     // Debugging to hit the DB and get users with similar emails
-//     console.log("Number of rows for query: " + results.length);
-//     console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
-
-//     if(results.length == 0)
-//     {
-//       var insert_qry = 'INSERT INTO user_basic (user_email, user_firstname, user_lastname, user_pw) VALUES (?, ?, ?, ?)';
-//       connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
-//       {
-//         if(error)
-//         {
-//           console.log("Error adding new user to table");
-//           throw error;
-//         }
-
-//         console.log(f_name + " " + l_name + " has been successfully added!");    
-//         res.render('signin.html');
-//       });
-//     }
-
-//     else
-//     {
-//       console.log(email + " already exists as a user!");   
-//       res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
-//     }
-//   });
-// });
-
-app.post('/signin', function(req, res)
-{
-  console.log('hello world');
-  console.log(req.body);
-  console.log();
-  console.log(res.body);
-
-
-  var name = req.body.name;
-  var pw = req.body.pw;
-  var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
+//   var name = req.body.name;
+//   var pw = req.body.pw;
+//   var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
 
   // connection.query(query_str, [name], function(error, results, fields)
   // {
