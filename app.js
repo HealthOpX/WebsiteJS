@@ -29,8 +29,15 @@ var connection = mysql.createConnection(
 });
 
 connection.connect(function(err) {
-  if (err) {
+  if (err) 
+  {
     console.error('Database connection failed: ' + err.stack);
+    console.log('Connected to database.');
+    console.log("*****" + process.env.RDS_HOSTNAME);
+    console.log("*****" + process.env.RDS_USER);
+    console.log("*****" + process.env.RDS_PASSWORD);
+    console.log("*****" + process.env.RDS_PORT);
+    console.log("*****" + process.env.RDS_DB_NAME);
     return;
   }
   console.log('Connected to database.');
