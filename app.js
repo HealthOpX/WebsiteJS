@@ -89,13 +89,13 @@ app.get('/index.html', function (req, res)
   res.render("index.html" );
 });
 //Code to return register page!
-app.get('/register.html', function (req, res) 
+app.get('/signup.html', function (req, res) 
 {
   var message='';
   var rows = 0;
   console.log('message: ', message);
   console.log('rows: ', rows);
-  res.render("register.html", {message: message, rows: rows} );
+  res.render("signup.html", {message: message, rows: rows} );
 });
 
 // Function to sign up new user!
