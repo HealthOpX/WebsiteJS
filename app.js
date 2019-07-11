@@ -24,7 +24,8 @@ var connection = mysql.createConnection(
   host     : "aa4ue4rcwwjj6o.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
   user     : "healthopx",
   password : "minorities4excellence",
-  port     : 3306
+  port     : 3306,
+  database : "ebdb"
 });
 
 connection.connect(function(err) {
@@ -32,7 +33,6 @@ connection.connect(function(err) {
     console.error('Database connection failed: ' + err.stack);
     return;
   }
-
   console.log('Connected to database.');
 });
 
@@ -114,7 +114,7 @@ app.post('/signup', function(req, res)
   var email = req.body.email;
   var pw = req.body.pass;
 
-  var query_str = 'SELECT * FROM users WHERE user_email = ?';
+  var query_str = 'SELECT * FROM users WHERE u_email = ?';
 
   connection.query(query_str, [email], function(error, results, fields)
   {
@@ -124,13 +124,18 @@ app.post('/signup', function(req, res)
       throw error;
     }
 
+    else
+    {
+      console.log("Sucess during database query. (/signup)")
+    }
+
     // Debugging to hit the DB and get users with similar emails
     console.log("Number of rows for query: " + results.length);
-    console.log("QUERY: SELECT * FROM user_basic WHERE user_email = " + email);
+    console.log("QUERY: SELECT * FROM users WHERE u_email = " + email);
 
     if(results.length == 0)
     {
-      var insert_qry = 'INSERT INTO users (user_email, user_fname, user_lname, user_pw) VALUES (?, ?, ?, ?)';
+      var insert_qry = 'INSERT INTO users (u_email, u_fname, u_lname, u_pw) VALUES (?, ?, ?, ?)';
       connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
       {
         if(error)
@@ -162,7 +167,7 @@ app.post('/signin', function(req, res)
 
   var name = req.body.name;
   var pw = req.body.pw;
-  var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
+  var query_str = 'SELECT u_pw FROM u_basic WHERE u_email = ?';
 
   connection.query(query_str, [name], function(error, results, fields)
   {
@@ -176,8 +181,8 @@ app.post('/signin', function(req, res)
     console.log("Results: ");
     console.log(results);
     console.log(results[0]);
-    console.log(results[0]['user_pw']);
-    console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
+    console.log(results[0]['u_pw']);
+    console.log('SELECT u_pw FROM u_basic WHERE u_email = ' + name);
 
     if(results.length == 0)
     {
@@ -186,7 +191,7 @@ app.post('/signin', function(req, res)
       return; 
     }
 
-    if(pw == results[0]['user_pw'])
+    if(pw == results[0]['u_pw'])
     {
       console.log('Succesful login!');
       res.render('patient-profile.html');
