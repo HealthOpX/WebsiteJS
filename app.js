@@ -21,10 +21,10 @@ app.use(bodyParser.json());
 // Connection to the database!
 var connection = mysql.createConnection(
 {
-  host     : process.env.RDS_HOSTNAME,
-  user     : process.env.RDS_USERNAME,
-  password : process.env.PASSWORD,
-  port     : process.env.PORT,
+  host     : "aa4ue4rcwwjj6o.clkibeiyg6rg.us-east-2.rds.amazonaws.com:3306",
+  user     : "healthopx",
+  password : "minorities4excellence",
+  port     : 3306
 });
 
 connection.connect(function(err) {
@@ -152,55 +152,55 @@ app.post('/signup', function(req, res)
   // });
 });
 
-// app.post('/signin', function(req, res)
-// {
-//   console.log('hello world');
-//   console.log(req.body);
-//   console.log();
-//   console.log(res.body);
+app.post('/signin', function(req, res)
+{
+  console.log('hello world');
+  console.log(req.body);
+  console.log();
+  console.log(res.body);
 
 
-//   var name = req.body.name;
-//   var pw = req.body.pw;
-//   var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
+  var name = req.body.name;
+  var pw = req.body.pw;
+  var query_str = 'SELECT user_pw FROM user_basic WHERE user_email = ?';
 
-  // connection.query(query_str, [name], function(error, results, fields)
-  // {
-  //   if(error)
-  //   {
-  //     console.log("Error during db query. (/signin)");
-  //     throw error;
-  //   }
+  connection.query(query_str, [name], function(error, results, fields)
+  {
+    if(error)
+    {
+      console.log("Error during db query. (/signin)");
+      throw error;
+    }
 
-  //   console.log("Number of rows for query: ", results.length);
-  //   console.log("Results: ");
-  //   console.log(results);
-  //   console.log(results[0]);
-  //   console.log(results[0]['user_pw']);
-  //   console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
+    console.log("Number of rows for query: ", results.length);
+    console.log("Results: ");
+    console.log(results);
+    console.log(results[0]);
+    console.log(results[0]['user_pw']);
+    console.log('SELECT user_pw FROM user_basic WHERE user_email = ' + name);
 
-  //   if(results.length == 0)
-  //   {
-  //     console.log("No accounts were found with corresponding email!");
-  //     res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
-  //     return; 
-  //   }
+    if(results.length == 0)
+    {
+      console.log("No accounts were found with corresponding email!");
+      res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
+      return; 
+    }
 
-  //   if(pw == results[0]['user_pw'])
-  //   {
-  //     console.log('Succesful login!');
-  //     res.render('patient-profile.html');
-  //     return;
-  //   }
+    if(pw == results[0]['user_pw'])
+    {
+      console.log('Succesful login!');
+      res.render('patient-profile.html');
+      return;
+    }
 
-  //   else
-  //   {
-  //     console.log("Credentials not found, please try again!");
-  //     res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
-  //     return;
-  //   }
-  // });
-// });
+    else
+    {
+      console.log("Credentials not found, please try again!");
+      res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
+      return;
+    }
+  });
+});
 
 app.get('/email', function (req, res) 
 {
