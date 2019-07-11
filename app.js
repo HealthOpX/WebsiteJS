@@ -152,7 +152,7 @@ app.post('/signup', function(req, res)
     else
     {
       console.log(email + " already exists as a user!");   
-      res.render('register.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
+      res.render('signup.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
     }
   });
 });
