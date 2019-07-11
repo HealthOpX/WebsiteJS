@@ -21,11 +21,11 @@ app.use(bodyParser.json());
 // Connection to the database!
 var connection = mysql.createConnection(
 {
-  host     : "aa4ue4rcwwjj6o.clkibeiyg6rg.us-east-2.rds.amazonaws.com",
-  user     : "healthopx",
-  password : "minorities4excellence",
-  port     : 3306,
-  database : "ebdb"
+  host     : process.env.RDS_HOSTNAME,
+  user     : process.env.RDS_USER,
+  password : process.env.RDS_PASSWORD,
+  port     : process.env.RDS_PORT,
+  database : process.env.RDS_DB_NAME
 });
 
 connection.connect(function(err) {
@@ -35,6 +35,11 @@ connection.connect(function(err) {
   }
   console.log('Connected to database.');
   console.log("*****" + process.env.RDS_HOSTNAME);
+  console.log("*****" + process.env.RDS_USER);
+  console.log("*****" + process.env.RDS_PASSWORD);
+  console.log("*****" + process.env.RDS_PORT);
+  console.log("*****" + process.env.RDS_DB_NAME);
+
 });
 
 //Code to return defult main page!
