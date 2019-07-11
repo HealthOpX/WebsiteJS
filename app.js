@@ -145,7 +145,7 @@ app.post('/signup', function(req, res)
         }
 
         console.log(f_name + " " + l_name + " has been successfully added!");    
-        res.render('signin.html');
+        res.render('signin.html', {rows: 1});
       });
     }
 
