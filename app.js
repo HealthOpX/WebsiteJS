@@ -34,7 +34,7 @@ connection.connect(function(err) {
     return;
   }
   console.log('Connected to database.');
-  console.log("*****" + System.getenv("RDS_HOSTNAME"));
+  console.log("*****" + process.env.RDS_HOSTNAME);
 });
 
 //Code to return defult main page!
