@@ -98,6 +98,8 @@ app.get('/signup.html', function (req, res)
   res.render("signup.html", {message: message, rows: rows} );
 });
 
+
+
 // Function to sign up new user!
 // If user exists, will prompt user to enter new email
 // If user is new, will be redirected into the sign in page
@@ -167,7 +169,7 @@ app.post('/signin', function(req, res)
 
   var name = req.body.name;
   var pw = req.body.pw;
-  var query_str = 'SELECT u_pw FROM u_basic WHERE u_email = ?';
+  var query_str = 'SELECT u_pw FROM users WHERE u_email = ?';
 
   connection.query(query_str, [name], function(error, results, fields)
   {
