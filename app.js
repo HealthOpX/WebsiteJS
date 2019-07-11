@@ -35,12 +35,6 @@ connection.connect(function(err) {
     return;
   }
   console.log('Connected to database.');
-  console.log("*****" + process.env.RDS_HOSTNAME);
-  console.log("*****" + process.env.RDS_USER);
-  console.log("*****" + process.env.RDS_PASSWORD);
-  console.log("*****" + process.env.RDS_PORT);
-  console.log("*****" + process.env.RDS_DB_NAME);
-
 });
 
 //Code to return defult main page!
@@ -113,6 +107,7 @@ app.get('/signup.html', function (req, res)
 app.post('/signup', function(req, res)
 {
   // Output stuff for local debugging if possible
+  console.log(req);
   console.log(req.body);
   console.log();
   console.log(res.body);
@@ -168,6 +163,7 @@ app.post('/signup', function(req, res)
 
 app.post('/signin', function(req, res)
 {
+  console.log("*signin*: " + req.url);
   console.log('hello world');
   console.log(req.body);
   console.log();
