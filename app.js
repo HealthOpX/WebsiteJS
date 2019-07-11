@@ -34,6 +34,7 @@ connection.connect(function(err) {
     return;
   }
   console.log('Connected to database.');
+  console.log("*****" + MediaKeySystemAccess.getenv("RDS_DB_NAME"));
 });
 
 //Code to return defult main page!
