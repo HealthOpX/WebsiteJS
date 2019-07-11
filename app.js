@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 var connection = mysql.createConnection(
 {
   host     : process.env.RDS_HOSTNAME,
-  user     : process.env.RDS_USER,
+  user     : process.env.RDS_USERNAME ,
   password : process.env.RDS_PASSWORD,
   port     : process.env.RDS_PORT,
   database : process.env.RDS_DB_NAME
@@ -32,12 +32,6 @@ connection.connect(function(err) {
   if (err) 
   {
     console.error('Database connection failed: ' + err.stack);
-    console.log('Connected to database.');
-    console.log("*****" + process.env.RDS_HOSTNAME);
-    console.log("*****" + process.env.RDS_USER);
-    console.log("*****" + process.env.RDS_PASSWORD);
-    console.log("*****" + process.env.RDS_PORT);
-    console.log("*****" + process.env.RDS_DB_NAME);
     return;
   }
   console.log('Connected to database.');
