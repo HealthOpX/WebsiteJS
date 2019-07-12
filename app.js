@@ -5,7 +5,9 @@ var express = require('express')
   , path = require('path')
   , aws = require('aws-sdk')
   , mysql = require('mysql')
-  , bodyParser = require('body-parser');
+  , bodyParser = require('body-parser')
+  , session = require('express-session');
+
 
 // Express instance managing the backend!
 var app = express();
@@ -163,7 +165,7 @@ app.post('/signup', function(req, res)
 
 app.post('/signin', function(req, res)
 {
-  console.log("*signin*: " + req.url);
+  console.log("*signin*: " + req);
   console.log('hello world');
   console.log(req.body);
   console.log();
@@ -268,3 +270,5 @@ var port = process.env.PORT || 3000;
 var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });
+
+// https://stackoverflow.com/questions/20089582/how-to-get-a-url-parameter-in-express
