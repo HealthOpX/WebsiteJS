@@ -1,8 +1,10 @@
-  var express = require('express')
-  , http = require('http')
-  , path = require('path')
-  , mysql = require('mysql')
-  , aws = require('aws-sdk');
+'use strict';
+var express = require('express')
+, http = require('http')
+, path = require('path')
+, mysql = require('mysql')
+, aws = require('aws-sdk');
+
 
 var app = express();
 var publicDir = require('path').join(__dirname,'/public');
@@ -23,6 +25,20 @@ app.get('/', function (req, res)
 app.get('/local.html', function (req, res) 
 {
   res.render("local.html" );
+})
+//Code to return mobile page!
+app.get('/mobile.html', function (req,res) 
+{
+  res.render('mobile.html');
+})
+//Code to return results page!
+app.get('/results.html', function (req, res)
+{
+  res.render("results.html");
+})
+// Code to return home page!
+app.get('/home.html', function(req, res) {
+  res.render("home.html");
 })
 //Code to return contact page!
 app.get('/contact.html', function (req, res) 
@@ -102,7 +118,6 @@ app.get('/email', function (req, res)
       /* more items */
     ],
 };
-
 // Create the promise and SES service object
 var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
@@ -116,8 +131,9 @@ sendPromise.then(
   });  
 })
 
-
 var port = process.env.PORT || 3000;
+
+
 var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });

@@ -1,0 +1,214 @@
+.header {
+    background-color: rgb(181, 181, 181);
+    background-image: url('../assets/background-1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: auto;
+    border-radius: 0px;
+    color: white;
+    padding: 0px;
+}
+.header-info {
+    padding-top: 6%;
+    padding-bottom: 5%; 
+    padding-left: 25%;
+    padding-right: 25%;
+} 
+.search-header {
+    padding-left: 1%;
+    margin-bottom: 1%;
+}
+.input-header {
+    width: 80%;
+    border: 3px rgb(58, 58, 70) solid;
+    padding-left: 3%;
+    font-size: 20px;
+}
+.input-header:focus {
+    outline: none;
+}
+.submit-search {
+    margin-top: 2%;
+    border: 3px rgb(58, 58, 70) solid;
+    background-color: white;
+}
+.submit-search:active {
+    color: rgb(58, 58, 70);
+    background-color: rgb(218, 218, 218);
+}
+* {
+    box-sizing: border-box;
+}
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 0 10px;
+}
+.row {
+    margin: 0 -5px;
+}
+.card {
+    padding: 16px;
+    text-align: left;
+    background-color: inherit;
+    border: none;
+}
+.card h4 {
+    color: rgb(224,54,49) !important;
+}
+.card a {
+    color: rgb(0, 139, 253) !important;
+    text-decoration: underline;
+}
+.card-container {
+    width: 80%;
+    display: inline-block;
+}
+.icon-container {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 80%;
+    display: inline-block;
+}
+.icon-container i {
+    color: rgb(58, 58, 70);
+    margin-bottom: 5%;
+}
+.partner-container {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    display: relative;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: rgb(245, 245, 245);
+}
+.partner-container h2 {
+    color: rgb(224,54,49);
+    margin-bottom: 1%;
+}
+.partner-container h4 {
+    color: #34394b;
+    margin-bottom: 2%;
+}
+.ad-container {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    display: relative; margin-left: 2%;
+    margin-right: 2%;
+    background-color: rgb(238, 238, 238);
+}
+.ad-container h2 {
+    color: rgb(224,54,49);
+}
+
+.homepage {
+    padding: 2% 15% 5% 15%;
+}
+.input {
+    padding-top: 5%;
+}
+/* .modal {
+    left: 25%;
+    width: 25%;
+    font-size: 2em;
+}
+.modal-content {
+    padding: 2% 5% 2% 5%;
+
+}
+.rounded {
+    border-radius: 2em;
+}
+.results {
+    margin-top: 5%;
+    padding-top: 5%;
+    overflow-y: scroll;
+    height: 950px;
+}
+hr {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+.card img {
+    margin-bottom: 2%;
+    width: 100%;
+    height: auto;
+}
+.treatment {
+    padding-top: 7%;
+}
+.learn {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 5%;
+
+}
+.card {
+    border: rgb(79, 89, 116) solid 4px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0 2% 0% 2%;
+    height: 95%;
+    margin-bottom: 15%;
+    width: 100%;
+} 
+.card-listing {
+    margin-bottom: 5%;
+}
+.hospital {
+    font-size: 100%;
+}
+.duration {
+    font-size: 300%;
+}
+.stay {
+    right: 8%;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    height: 15%;
+    width: 1%;
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card i {
+    font-size: 4em;
+}
+.card p {
+    padding: 2% 5% 0% 5%;
+    margin-top: 15px;
+    color: #555;
+}
+.card h3{
+    padding-left: 2%;
+    margin-top: 0%;
+    width: 70%;
+}
+.card .cost {
+    padding-top: 8%;
+    padding-left: 15%;
+}
+.card h4{
+    padding-left: 2%;
+    margin-top: 0%;
+}
+.card button {
+    margin-right: 5%;
+}
+.card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.38);
+}
+.card button {
+    background-color: rgb(120,7,8);
+    color: white;
+    font-size: 2em;
+}
+.select {
+    margin-top: 5%;
+}
+.modal {
+    width: auto;
+}
+.msg {
+    height: auto;
+} */
