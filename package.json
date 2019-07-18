@@ -2,14 +2,16 @@
   "name": "application-name",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "node app"
-  },
-  "dependencies": {
-    "aws-sdk": "^2.465.0",
-    "ejs": "^2.6.1",
-    "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "mysql": "latest"
-  }
+  "scripts": 
+    {
+      "start": "node app"
+    },
+  "dependencies": 
+    {
+      "aws-sdk": "^2.465.0",
+      "ejs": "^2.6.1",
+      "express": "^4.17.1",
+      "mysql": "latest",
+      "typescript": "2.4.2"
+    }
 }
