@@ -5,9 +5,7 @@ var express = require('express')
   , path = require('path')
   , aws = require('aws-sdk')
   , mysql = require('mysql')
-  , bodyParser = require('body-parser')
-  , session = require('express-session');
-
+  , bodyParser = require('body-parser');
 
 // Express instance managing the backend!
 var app = express();
