@@ -54,7 +54,7 @@
 
 <div class="body-container container" style="margin-top:30px">
 <div class="row">
-    <h1>Search For Treatments Around The World</h1>
+    <a href="home.html"><h1>Search For Treatements Around The World</h1></a>
     <input type="text" class="form-control form-control-lg form" id="treatment">
     <button type="submit" onclick="search();" class="btn btn-dark search"><i class="fas fa-search"></i> Search</button>
 </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="check_surgery" onclick="displaySurgeries(this.checked);" >
-            <label class="form-check-label" for="check_surgery">Surgeries</label>
+            <label class="form-check-label" for="check_surgery" onclick="displaySurgeries(this.checked);">Surgeries</label>
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="check_exams" onclick="displayExams(this.checked);">
@@ -89,9 +89,8 @@
 
 <div class="jumbotron text-center footer" style="margin-bottom:0">
     <hr>
-    <p>www.Healthopx.com</p>
+    <p>www.healthopx.com</p>
 </div>
-
 </body>
 <script src="../js/booking.js" async></script>
 

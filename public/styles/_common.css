@@ -1,14 +1,25 @@
 body {
     color: #34394b;
+    width: auto;
 }
-.header {
-    background-color: rgb(181, 181, 181);
-    border-radius: 0%;
-    border-top: solid 15px #7c0605;
-    border-bottom: solid 15px #7c0605;
+.nav-item {
+    border-right: 2px solid #6a6c74;
+    padding-left: 2%;
+    padding-right: 20px;
 }
 .navbar-dark {
-    background-color: #34394b !important;
+    font-size: 1.25em;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #3c3d3f !important;
+}
+.navbar-brand {
+    padding-right: 50px;
+    border-right: 2px solid #6a6c74;
+}
+.signin {
+    border-right: 2px solid #6a6c74;
+    border-left: 2px solid #6a6c74;
 }
 .form {
     width: 80%;
@@ -19,7 +30,19 @@ body {
     margin-top: 2%;
 }
 .footer {
-    margin-top: 5%;
+    background-color: #3c3d3f;
+    color: white;
+    border-radius: 0px;
+}
+.footer a {
+    color: white;
+}
+.footer .site-url {
+    padding-top: 2%;
+}
+.footer .info-col {
+    border-left: solid 2px #6a6c74;
+    border-right: solid 2px #6a6c74;
 }
 hr {
     border-color: rgba(0, 0, 0, 0.2);

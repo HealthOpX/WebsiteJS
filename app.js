@@ -194,7 +194,6 @@ app.get('/email', function (req, res)
       /* more items */
     ],
 };
-
 // Create the promise and SES service object
 var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
@@ -208,8 +207,9 @@ sendPromise.then(
   });  
 });
 
-
 var port = process.env.PORT || 3000;
+
+
 var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });

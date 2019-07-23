@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/_common.css">
+    <link rel="stylesheet" href="styles/results.css">
+    <link rel="stylesheet" href="styles/booking.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>HealthOpX</title>
+</head>
+<body>
+
+    <!-- Modal -->
+    <div id="renderModal" class="modal fade" role="dialog"><div class="modal-dialog"></div><div class="modal-content" id="modal-content"></div></div>
+    <!-- End Modal -->
+
+    <!-- Top Nav Bar -->
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <a class="navbar-brand" href="home.html">
+                    <img src="../assets/HealthOpXLogo[2019].png" alt="HealthOpX" width="200px;">
+                </a>
+                <li class="nav-item my-auto">
+                    <a class="nav-link active" href="results.html">Booking</a>
+                </li>
+                <li class="nav-item my-auto">
+                    <a class="nav-link" href="local.html">Partners</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item signin">
+                    <a class="nav-link" href="signin.html">Sign In</i></a>
+                </li>  
+            </ul>
+        </div>  
+    </nav>
+
+    <!-- End Nav Bar -->
+
+    <!-- Header With Result Fields -->
+
+    <div class="jumbotron text-left header" style="margin-bottom:0">
+        <div class="header-info">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h3 id="report-title">Search Results</h3>
+                    <p id="result-number"></p>
+                </div>
+                <div class="col-md-8">
+                    <form autocomplete="off" action="javascript:search(document.getElementById('treatment').value.toUpperCase(), document.getElementById('location').value.toUpperCase());">
+                        <div class="form-group autocomplete">
+                            <input class="input-header treat" type="text" name="treatment-search" id="treatment" placeholder="Treatment/Procedure"><br>
+                            <input class="input-header" type="text" name="location-search" id="location" placeholder="Location">
+                            <button type="submit" class="submit-search"><i class="fas fa-search"></i>&nbspSearch</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Header -->
+
+    <!-- Results Info -->
+
+    <div class="results-container text-center">
+        <div class="row">
+            <div class="col-sm-3 text-left">
+                <div class="row filters">
+                    <div class="col-lg-10">
+                        <h6>Filter</h6>
+                    </div>
+                    <div class="col">
+                        <i class="fas fa-sort-amount-up" title="Sort Ascending" onclick='sort();' id="sort"></i>
+                    </div>
+                </div>
+                <br>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="allFilter" value="all" onclick="displayAll(this.checked);">All
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="surgeriesFilter" value="surgeries" onclick="displaySurgeries(this.checked);">Surgeries
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" id="examsFilter" value="screenings" onclick="displayExams(this.checked);">Health Screenings
+                    </label>
+                </div>
+                <hr>
+                <h6>Location</h6>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="changwon" id="korea" onclick="displayKorea(this.checked);">Changwon, South Korea
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="taipeiCity" id="taipei" onclick="displayTaipei(this.checked);">Taipei City, Taiwan
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input" value="newTaipei" id="newTaipei" onclick="displayNewTaipei(this.checked);">New Taipei City, Taiwan
+                    </label>
+                </div>
+                <hr>
+            
+            </div>
+            <div class="col" id="results"></div>
+        </div>
+
+    </div>
+
+    <!-- End Partner Info -->
+
+    <!-- Footer -->
+    <div class="jumbotron text-left footer" style="margin-bottom:0">
+        <div class="row">
+            <div class="col">
+                <img src="../assets/HealthOpXLogo[2019].png" width="300px">
+                <p>HealthOpX LLC</p>
+            </div>
+            <div class="col info-col">
+                <div class="row">
+                    <div class="col">
+                        <h5>Company</h5>
+                        <h7><a href="contact.html">About</a></h7><br>
+                        <h7><a href="mobile.html">Mobile</a></h7><br>
+                        <h7><a href="contact.html">How it works</a></h7>
+                    </div>
+                    <div class="col">
+                        <h5>Contact</h5>
+                        <h7><a href="contact.html">Help/FAQ</a></h7><br>
+                        <h7><a href="local.html">Partners</a></h7><br>
+                        <h7><a href="contact.html">Our Team</a></h7><br>
+                        <h7><a href="contact.html">Contact Us</a></h7>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-center site-url">
+                <h4><a href="#">www.HealthOpX.com</a></h4>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer -->
+
+</body>
+<script src="../js/booking.js" async></script>
+
+</html>
+
