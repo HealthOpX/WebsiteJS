@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-var publicDir = require('path').join(__dirname,'views/public/');
+var publicDir = "../views/public/"
 var privateDir = require('path').join(__dirname,'views/private/');
 
 //Code to return defult main page!
