@@ -9,7 +9,12 @@ var express = require('express')
 
 // Express instance managing the backend!
 var app = express();
-var publicDir = require('path').join(__dirname,'/public');
+var routes = require('./source/router');
+
+var publicDir = require('path').join(__dirname,'views/public');
+var privateDir = require('path').join(__dirname,'views/private');
+
+//configurations?
 aws.config.update({region: 'us-east-2	'})
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
@@ -37,68 +42,8 @@ connection.connect(function(err) {
   console.log('Connected to database.');
 });
 
-//Code to return defult main page!
-app.get('/', function (req, res) 
-{
-   res.render("index.html" );
-});
-//Code to return local page!
-app.get('/local.html', function (req, res) 
-{
-  res.render("local.html" );
-});
-//Code to return contact page!
-app.get('/contact.html', function (req, res) 
-{
-  res.render("contact.html" );
-});
-//Code to return signin page!
-app.get('/signin.html', function (req, res) 
-{
-  var rows = 1;
-  var message = '';
-  res.render("signin.html", {rows: rows, message: message});
-});
-//Code to return regestration form page!
-app.get('/regform.html', function (req, res) 
-{
-  res.render("regform.html" );
-});
-//Code to return patient page!
-app.get('/patient.html', function (req, res) 
-{
-  res.render("patient.html" );
-});
-//Code to return patient profile page!
-app.get('/patient-profile.html', function (req, res) 
-{
-  res.render("patient-profile.html" );
-});
-//Code to return filbox page!
-app.get('/fillbox.html', function (req, res) 
-{
-  res.render("fillbox.html" );
-});
-//Code to return confirmation page!
-app.get('/confirmation.html', function (req, res) 
-{
-  res.render("confirmation.html" );
-});
-//Code to return index page!
-app.get('/index.html', function (req, res) 
-{
-  res.render("index.html" );
-});
-//Code to return register page!
-app.get('/signup.html', function (req, res) 
-{
-  var message='';
-  var rows = 0;
-  console.log('message: ', message);
-  console.log('rows: ', rows);
-  res.render("signup.html", {message: message, rows: rows} );
-});
 
+app.use('/', routes);
 
 
 // Function to sign up new user!
