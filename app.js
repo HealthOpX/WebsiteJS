@@ -215,3 +215,5 @@ var server = app.listen(port, function () {
 });
 
 // https://stackoverflow.com/questions/20089582/how-to-get-a-url-parameter-in-express
+
+// arn:aws:iam::734985897378:role/service-role/patient-SMS-Role
