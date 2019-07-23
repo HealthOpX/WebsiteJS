@@ -2,10 +2,13 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
+var publicDir = require('path').join(__dirname,'views/public');
+var privateDir = require('path').join(__dirname,'views/private');
+
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
-   res.render("index.html" );
+   res.render(publicDir + "index.html" );
 });
 //Code to return local page!
 router.get('/local.html', function (req, res) 
