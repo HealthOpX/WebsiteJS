@@ -8,7 +8,7 @@ var priDir = "../views/private"
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
-   res.render(pubDir + "index.html" );
+   res.render(pubDir + "home.html" );
 });
 //Code to return local page!
 router.get('/local.html', function (req, res) 
@@ -52,10 +52,15 @@ router.get('/confirmation.html', function (req, res)
 {
   res.render(pubDir + "confirmation.html" );
 });
-//Code to return index page!
-router.get('/index.html', function (req, res) 
+//Code to return home page!
+router.get('/home.html', function (req, res) 
 {
-  res.render(pubDir + "index.html" );
+  res.render(pubDir + "home.html" );
+});
+//Code to return home page!
+router.get('/results.html', function (req, res) 
+{
+  res.render(pubDir + "results.html" );
 });
 //Code to return register page!
 router.get('/signup.html', function (req, res) 
