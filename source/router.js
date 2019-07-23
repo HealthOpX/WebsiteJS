@@ -2,60 +2,60 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-var publicDir = "../views/public/"
-var privateDir = require('path').join(__dirname,'views/private/');
+var pubDir = "../views/public/"
+var priDir = "../views/private"
 
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
-   res.render(publicDir + "index.html" );
+   res.render(pubDir + "index.html" );
 });
 //Code to return local page!
 router.get('/local.html', function (req, res) 
 {
-  res.render("local.html" );
+  res.render(pubDir + "local.html" );
 });
 //Code to return contact page!
 router.get('/contact.html', function (req, res) 
 {
-  res.render("contact.html" );
+  res.render(pubDir + "contact.html" );
 });
 //Code to return signin page!
 router.get('/signin.html', function (req, res) 
 {
   var rows = 1;
   var message = '';
-  res.render("signin.html", {rows: rows, message: message});
+  res.render(pubDir + "signin.html", {rows: rows, message: message});
 });
 //Code to return regestration form page!
 router.get('/regform.html', function (req, res) 
 {
-  res.render("regform.html" );
+  res.render(pubDir + "regform.html" );
 });
 //Code to return patient page!
 router.get('/patient.html', function (req, res) 
 {
-  res.render("patient.html" );
+  res.render(priDir + "patient.html" );
 });
 //Code to return patient profile page!
 router.get('/patient-profile.html', function (req, res) 
 {
-  res.render("patient-profile.html" );
+  res.render(priDir + "patient-profile.html" );
 });
 //Code to return filbox page!
 router.get('/fillbox.html', function (req, res) 
 {
-  res.render("fillbox.html" );
+  res.render(priDir + "fillbox.html" );
 });
 //Code to return confirmation page!
 router.get('/confirmation.html', function (req, res) 
 {
-  res.render("confirmation.html" );
+  res.render(pubDir + "confirmation.html" );
 });
 //Code to return index page!
 router.get('/index.html', function (req, res) 
 {
-  res.render("index.html" );
+  res.render(pubDir + "index.html" );
 });
 //Code to return register page!
 router.get('/signup.html', function (req, res) 
@@ -64,7 +64,7 @@ router.get('/signup.html', function (req, res)
   var rows = 0;
   console.log('message: ', message);
   console.log('rows: ', rows);
-  res.render("signup.html", {message: message, rows: rows} );
+  res.render(pubDir + "signup.html", {message: message, rows: rows} );
 });
 
 module.exports = router;
