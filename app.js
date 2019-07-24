@@ -37,6 +37,7 @@ connection.connect(function(err) {
   if (err) 
   {
     console.error('Database connection failed: ' + err.stack);
+    console.error('***Failed in Master***');
     return;
   }
   console.log('Connected to database.');
