@@ -37,6 +37,7 @@ connection.connect(function(err) {
   if (err) 
   {
     console.error('Database connection failed: ' + err.stack);
+    console.error('***Error in BE***');
     return;
   }
   console.log('Connected to database.');
@@ -217,5 +218,3 @@ var server = app.listen(port, function () {
 // https://stackoverflow.com/questions/20089582/how-to-get-a-url-parameter-in-express
 
 // arn:aws:iam::734985897378:role/service-role/patient-SMS-Role
-
-// Hello world
