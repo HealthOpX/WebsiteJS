@@ -19,8 +19,6 @@ app.use(bodyParser.json());
 
 
 var routes = require('./source/router');
-// var publicDir = require('path').join(__dirname,'views/public');
-// var privateDir = require('path').join(__dirname,'views/private');
 
 
 aws.config.update({region: 'us-east-1'})
