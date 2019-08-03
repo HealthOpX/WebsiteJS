@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 // var path = require('path');
 
-var pubDir = "/public/";
+var pubDir = "";
 var priDir = "/private/";
 // var priDir = "";
 
