@@ -10,7 +10,7 @@ var express = require('express')
 // Express instance managing the backend!
 
 var app = express();
-app.set('views', __dirname + 'views');
+app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static('public'));
