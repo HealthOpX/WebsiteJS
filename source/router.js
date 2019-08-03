@@ -3,8 +3,8 @@ var router = express.Router();
 // var path = require('path');
 
 var pubDir = "../views/public/";
-// var priDir = "../views/private/";
-var priDir = "";
+var priDir = "private/";
+// var priDir = "";
 
 //Code to return defult main page!
 router.get('/', function (req, res) 
