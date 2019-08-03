@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var path = require('path');
+// var path = require('path');
 
-var pubDir = "../views/public/"
-var priDir = "../views/private/"
+var pubDir = "../views/public/";
+var priDir = "private/";
 
 //Code to return defult main page!
 router.get('/', function (req, res) 
@@ -35,7 +35,7 @@ router.get('/regform.html', function (req, res)
 //Code to return patient page!
 router.get('/patient.html', function (req, res) 
 {
-  res.render(priDir + "patient.html" );
+  res.render("patient.html" );
 });
 //Code to return patient profile page!
 router.get('/patient-profile.html', function (req, res) 
