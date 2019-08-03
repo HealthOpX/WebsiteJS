@@ -3,7 +3,7 @@ var router = express.Router();
 // var path = require('path');
 
 var pubDir = "";
-var priDir = "/private/";
+var priDir = "";
 // var priDir = "";
 
 //Code to return defult main page!
