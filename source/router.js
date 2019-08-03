@@ -9,7 +9,7 @@ var priDir = "/private/";
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
-   res.render(pubDir + "home.html" );
+   res.render("home.html" );
 });
 //Code to return local page!
 router.get('/local.html', function (req, res) 
