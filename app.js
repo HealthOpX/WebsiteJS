@@ -1,4 +1,4 @@
-  //< General app to handle all the back end of the site!
+//< General app to handle all the back end of the site!
   
 var express = require('express')
   , http = require('http')
@@ -8,40 +8,43 @@ var express = require('express')
   , bodyParser = require('body-parser');
 
 // Express instance managing the backend!
+
 var app = express();
-var routes = require('./source/router');
-
-var publicDir = require('path').join(__dirname,'views/public');
-var privateDir = require('path').join(__dirname,'views/private');
-
-//configurations?
-aws.config.update({region: 'us-east-2	'})
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + 'views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
-// Connection to the database!
-var connection = mysql.createConnection(
-{
-  host     : process.env.RDS_HOSTNAME,
-  user     : process.env.RDS_USERNAME ,
-  password : process.env.RDS_PASSWORD,
-  port     : process.env.RDS_PORT,
-  database : process.env.RDS_DB_NAME
-});
 
-connection.connect(function(err) {
-  if (err) 
-  {
-    console.error('Database connection failed: ' + err.stack);
-    console.error('***Error in BE***');
-    return;
-  }
-  console.log('Connected to database.');
-});
+var routes = require('./source/router');
+// var publicDir = require('path').join(__dirname,'views/public');
+// var privateDir = require('path').join(__dirname,'views/private');
+
+
+aws.config.update({region: 'us-east-1'})
+
+// Connection to the database!
+
+// var connection = mysql.createConnection(
+// {
+//   host     : process.env.RDS_HOSTNAME,
+//   user     : process.env.RDS_USERNAME ,
+//   password : process.env.RDS_PASSWORD,
+//   port     : process.env.RDS_PORT,
+//   database : process.env.RDS_DB_NAME
+// });
+
+// connection.connect(function(err) {
+//   if (err) 
+//   {
+//     console.error('Database connection failed: ' + err.stack);
+//     console.error('***Error in BE***');
+//     return;
+//   }
+//   console.log('Connected to database.');
+// });
 
 
 app.use('/', routes);
