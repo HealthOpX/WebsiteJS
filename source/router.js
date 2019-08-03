@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 // var path = require('path');
 
-var pubDir = "/public/";
-var priDir = "/private/";
+var pubDir = "public/";
+var priDir = "private/";
 // var priDir = "";
 
 //Code to return defult main page!
