@@ -9,7 +9,7 @@ var priDir = "private/";
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
-   res.render("home.html" );
+   res.render(pubDir + "home.html" );
 });
 //Code to return local page!
 router.get('/local.html', function (req, res) 
@@ -36,7 +36,7 @@ router.get('/regform.html', function (req, res)
 //Code to return patient page!
 router.get('/patient.html', function (req, res) 
 {
-  res.render("patient.html");
+  res.render(priDir + "patient.html");
 });
 //Code to return patient profile page!
 router.get('/patient-profile.html', function (req, res) 
