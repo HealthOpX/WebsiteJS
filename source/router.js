@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var cookieParser = require('cookie-parser');
+
 // var path = require('path');
 
 var pubDir = "public/";
@@ -9,6 +11,9 @@ var priDir = "private/";
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
+  console.log('Cookies: ', req.cookies);
+  console.log('*********************************')
+  console.log('Signed Cookies: ', req.signedCookies);
    res.render(pubDir + "home.html" );
 });
 //Code to return local page!

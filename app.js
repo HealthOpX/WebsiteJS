@@ -5,10 +5,10 @@ var express = require('express')
   , path = require('path')
   , aws = require('aws-sdk')
   , mysql = require('mysql')
-  , bodyParser = require('body-parser');
+  , bodyParser = require('body-parser')
+  , cookieParser = require('cookie-parser');
 
 // Express instance managing the backend!
-
 var app = express();
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
@@ -16,6 +16,7 @@ app.set('view engine', 'html');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 
 var routes = require('./source/router');
@@ -23,7 +24,7 @@ var routes = require('./source/router');
 
 aws.config.update({region: 'us-east-1'})
 
-// Connection to the database!
+// Connection` to the database!
 
 // var connection = mysql.createConnection(
 // {
@@ -219,3 +220,6 @@ var server = app.listen(port, function () {
 // https://stackoverflow.com/questions/20089582/how-to-get-a-url-parameter-in-express
 
 // arn:aws:iam::734985897378:role/service-role/patient-SMS-Role
+
+// The link bellow is to access hox patient logins
+// https://healthopx-patients.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=2l7p6u93r60avs9fko3aorm1s6&redirect_uri=https://www.healthopx.com/patient.html&state=STATE&scope=openid
