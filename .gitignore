@@ -1,10 +1,7 @@
-Node module files
-/node_modules/*
-.gitignore/
-.elasticbeanstalk/
-.ebextensions/
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.ym
+!.elasticbeanstalk/*.global.yml
+
+# Source Code Ignores
+node_modules/*
