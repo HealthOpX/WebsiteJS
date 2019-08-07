@@ -45,6 +45,8 @@ router.get('/patient.html', function (req, res)
   console.log('req: ', req);
   console.log();
   console.log('res: ', res);
+  console.log();
+  console.log('*url=', req.get('host'));
 
   res.render(priDir + "patient.html");
 });
