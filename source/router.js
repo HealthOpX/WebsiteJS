@@ -41,6 +41,13 @@ router.get('/regform.html', function (req, res)
 //Code to return patient page!
 router.get('/patient.html', function (req, res) 
 {
+  console.log('Accessed the patient patient.html page!');
+  console.log();
+  console.log('id_token: ', req.query.id_token);
+  console.log();
+  console.log('access_token: ', req.query.access_token);
+
+
   res.render(priDir + "patient.html");
 });
 //Code to return patient profile page!
