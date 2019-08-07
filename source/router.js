@@ -11,9 +11,9 @@ var priDir = "private/";
 //Code to return defult main page!
 router.get('/', function (req, res) 
 {
-  console.log('Cookies: ', req.cookies);
-  console.log('*********************************')
-  console.log('Signed Cookies: ', req.signedCookies);
+  // console.log('Cookies: ', req.cookies);
+  // console.log('*********************************')
+  // console.log('Signed Cookies: ', req.signedCookies);
    res.render(pubDir + "home.html" );
 });
 //Code to return local page!
@@ -44,12 +44,7 @@ router.get('/patient.html', function (req, res)
   console.log('Accessed the patient patient.html page!');
   console.log('req: ', req);
   console.log();
-  console.log('req.query: ', req.query);
-  console.log();
-  console.log('id_token: ', req.query.id_token);
-  console.log();
-  console.log('access_token: ', req.query.access_token);
-
+  console.log('res: ', res);
 
   res.render(priDir + "patient.html");
 });
