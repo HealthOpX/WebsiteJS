@@ -42,6 +42,9 @@ router.get('/regform.html', function (req, res)
 router.get('/patient.html', function (req, res) 
 {
   console.log('Accessed the patient patient.html page!');
+  console.log('req: ', req);
+  console.log();
+  console.log('req.query: ', req.query);
   console.log();
   console.log('id_token: ', req.query.id_token);
   console.log();
