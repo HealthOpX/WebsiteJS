@@ -42,11 +42,8 @@ router.get('/regform.html', function (req, res)
 router.get('/patient.html', function (req, res) 
 {
   console.log('Accessed the patient patient.html page!');
-  console.log('req: ', req);
-  console.log();
-  console.log('res: ', res);
-  console.log();
-  console.log('*host=', req.get('host'));
+  console.log('req.query.id_token: ', req.query.id_token);
+  console.log('req.query.code: ', req.query.code);
   console.log('*orig=', req.originalUrl);
 
   res.render(priDir + "patient.html");
