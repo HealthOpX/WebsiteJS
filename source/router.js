@@ -46,7 +46,7 @@ router.get('/patient.html', function (req, res)
   console.log('req.query.code: ', req.query.code);
   
   // Variable that will hold the id_token
-  var id = ''; 
+  id = ''; 
 
   // all the data needed for the post request to get the jwt
   var form = 
@@ -73,7 +73,7 @@ router.get('/patient.html', function (req, res)
     }, 
     function (err, res, body) 
     {
-      let json = JSON.parse(body);
+      var json = JSON.parse(body);
       id = json['id_token'];
 
   });
