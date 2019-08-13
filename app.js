@@ -17,7 +17,7 @@ app.set('view engine', 'html');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(CookieParser());
 
 
 var routes = require('./source/router');
@@ -48,7 +48,7 @@ aws.config.update({region: 'us-east-1'})
 
 
 app.use('/', routes);
-app.use(express.cookieParser());
+app.use(express.CookieParser());
 
 
 // Function to sign up new user!
