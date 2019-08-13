@@ -72,6 +72,8 @@ router.get('/patient.html', function (req, res)
     function (err, res, body) 
     {
         console.log('Sucessful Post Request From API');
+        console.log(res);
+        console.log(body);
   });
 
 
