@@ -76,6 +76,7 @@ router.get('/patient.html', function (req, res)
       var json = JSON.parse(body);
       id = json['id_token'];
       console.log('*id: ', id);
+      res.cookie('HOX-PATIENT-VER');
       res.render(priDir + "patient.html");
   });
 });
