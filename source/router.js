@@ -74,11 +74,9 @@ router.get('/patient.html', function (req, res)
     function (err, res, body) 
     {
       let json = JSON.parse(body);
-      console.log(json);
-      console.log(json['id_token']);
-      
+      console.log('*id_token: ', json['id_token']);
+      id = json['id_token'];
 
-      console.log('FIN!');
   });
 
 
