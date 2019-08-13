@@ -75,6 +75,7 @@ router.get('/patient.html', function (req, res)
     {
       let json = JSON.parse(body);
       console.log(json);
+      console.log(json['id_token']);
       
 
       console.log('FIN!');
