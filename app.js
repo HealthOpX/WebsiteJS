@@ -6,6 +6,7 @@ var express = require('express')
   , aws = require('aws-sdk')
   , mysql = require('mysql')
   , bodyParser = require('body-parser')
+  , CognitoExpress = require("cognito-express")
   , cookieParser = require('cookie-parser');
 
 // Express instance managing the backend!
@@ -222,4 +223,4 @@ var server = app.listen(port, function () {
 // arn:aws:iam::734985897378:role/service-role/patient-SMS-Role
 
 // The link bellow is to access hox patient logins
-// https://healthopx-patients.auth.us-east-1.amazoncognito.com/login?response_type=token&client_id=2l7p6u93r60avs9fko3aorm1s6&redirect_uri=https://www.healthopx.com/patient.html&state=STATE
+// https://healthopx-patients.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=2l7p6u93r60avs9fko3aorm1s6&redirect_uri=https://www.healthopx.com/patient.html&state=STATE

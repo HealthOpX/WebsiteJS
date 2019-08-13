@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var cookieParser = require('cookie-parser');
+var querystring = require('querystring');
+var request = require('request');
 
 // var path = require('path');
 
@@ -42,9 +44,36 @@ router.get('/regform.html', function (req, res)
 router.get('/patient.html', function (req, res) 
 {
   console.log('Accessed the patient patient.html page!');
-  console.log('req.query.id_token: ', req.query.id_token);
   console.log('req.query.code: ', req.query.code);
-  console.log('*orig=', req.originalUrl);
+
+  // all the data needed for the post request to get the jwt
+  var form = 
+  {
+    grant_type: 'usr',
+    client_id: 'pwd',
+    code: req.query.code,
+    redirect_uri: 'https://www.healthopx.com/patient.html',
+    client_secret: '1sk4btg41ce58tav4gblrj3dfcu920r5euduvit469rfaquppan1'
+  };
+  var formData = querystring.stringify(form);
+  var contentLength = formData.length;
+
+  request(
+    {
+      headers: 
+      {
+        'Content-Length': contentLength,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      uri: 'https://healthopx-patients.auth.us-east-1.amazoncognito.com/oauth2/token',
+      body: formData,
+      method: 'POST'
+    }, 
+    function (err, res, body) 
+    {
+        console.log('Sucessful Post Request From API');
+  });
+
 
   res.render(priDir + "patient.html");
 });
