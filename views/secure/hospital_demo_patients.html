@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/_common.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/hospital-demo.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>HealthOpX</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">&nbsp;</a>
+            </li>
+        </ul>
+    </div>  
+</nav>
+<div class="container-fluid">
+    <div class="sidenav">
+        <div class="content">
+            <h1 class='text-center profile'>Hospital Profile</h1>
+            <hr>
+            <p><a href="hospital_demo.html">Home</a></p>
+            <hr>
+            <p><a href="">Patients</a></p>
+            <hr>
+            <p><a href="hospital_demo_templates.html">Templates</a></p>
+            <hr>
+            <p><a href="index.php">Logout</a></p>
+            <hr>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="search-content">
+            <h1 class="title-header">Patients</h1>
+            <label for='firstName'><h2>First Name:</h2></label>
+            <input type="text" class="form-control form-control-lg form" id="firstName">
+            <label for='lastName'><h2>Last Name:</h2></label>
+            <input type="text" class="form-control form-control-lg form" id="lastName">
+            <label for='patientId'><h2>PatientID</h2></label>
+            <input type="text" class="form-control form-control-lg form" id="patientId">
+            <button type="submit" class="btn btn-dark search"><i class="fas fa-search"></i> Search</button>
+        </div>
+        <div class="table">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>PatientID</th>
+                    <th>Procedure</th>
+                    <th>Arrival Date</th>
+                    <th>Procedure Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="active">
+                    <td>John</td>
+                    <td>Smith</td>
+                    <td>53554c52</td>
+                    <td>Hip Replacement</td>
+                    <td>05/26/2019</td>
+                    <td>05/28/2019</td>
+                    </tr>
+                    <tr>
+                    <td>Jane</td>
+                    <td>Doe</td>
+                    <td>14a23882</td>
+                    <td>Knee Replacement</td>
+                    <td>08/01/2019</td>
+                    <td>08/05/2019</td>
+                    </tr>
+                    <tr>
+                    <td>Mary</td>
+                    <td>Johnson</td>
+                    <td>e1a2d42b</td>
+                    <td>Female Health Screening Package 1</td>
+                    <td>09/09/2019</td>
+                    <td>09/09/2019</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

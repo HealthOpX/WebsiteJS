@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/_common.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/hospital-demo.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>HealthOpX</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">&nbsp;</a>
+            </li>
+        </ul>
+    </div>  
+</nav>
+<div class="container-fluid">
+    <div class="sidenav">
+        <div class="content">
+            <h1 class='text-center profile'>Hospital Profile</h1>
+            <hr>
+            <p><a href="hospital_demo.html">Home</a></p>
+            <hr>
+            <p><a href="hospital_demo_patients.html">Patients</a></p>
+            <hr>
+            <p><a href="">Templates</a></p>
+            <hr>
+            <p><a href="index.php">Logout</a></p>
+            <hr>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="modal" id="checklistModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Checklist</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- <form action="/action_page.php"> -->
+                        <div class="form-group">
+                            <label for="title">Checklist Name</label>
+                            <input type="title" class="form-control" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">List Items</label>
+                            <input type="password" class="form-control" id="pwd">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" class="form-control" id="notification">
+                            <label for="notification">Push Notifications</label>
+                        </div>
+                    <!-- </form> -->
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Add</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="medicationModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Medication</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- <form action="/action_page.php"> -->
+                        <div class="form-group">
+                            <label for="title">Medication Name</label>
+                            <input type="title" class="form-control" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="dose">Medication Dosage</label>
+                            <input type="title" class="form-control" id="dose">
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" class="form-control" id="notification">
+                            <label for="notification">Push Notifications</label>
+                        </div>
+                    <!-- </form> -->
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Add</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="sideEffectModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add a Side Effect</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- <form action="/action_page.php"> -->
+                        <div class="form-group">
+                            <label for="title">Side Effect</label>
+                            <input type="title" class="form-control" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Details</label>
+                            <input type="title" class="form-control" id="details">
+                        </div>
+                    <!-- </form> -->
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Add</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="title-header">Templates</h1>
+        <input type="text" class="form-control form-control-lg form" id="treatment">
+        <button type="submit" class="btn btn-dark search"><i class="fas fa-search"></i> Search</button>
+        <div class="parent">
+            <div class="col-md-8 template">
+                <h1>Hip Replacement</h1>
+                <br>
+                <div class="btn btn-dark template-part">
+                    <a href="#toggleTemplate1" data-toggle="collapse" class="toggle">
+                        <h2 class="toggle">Checklists</h2></a>
+                    <div id="toggleTemplate1" class="collapse">
+                        <div class="row template-list">
+                            <div class="col">
+                                <i class="fas fa-minus fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <h3>Pre-Trip Checklist</h3>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="row template-list">
+                            <div class="col">
+                                <i class="fas fa-minus fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <h3>Arrival Checklist</h3>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="row template-list">
+                            <div class="col">
+                                <i class="fas fa-minus fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <h3>Post-Trip Checklist</h3>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn btn-dark template-part">
+                    <a href="#toggleTemplate2" data-toggle="collapse" class="toggle">
+                        <h2 class="toggle">Medications</h2></a>
+                    <div id="toggleTemplate2" class="collapse">
+                        <div class="row template-list">
+                            <div class="col">
+                                <i class="fas fa-minus fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <h3>Ibuprofen</h3>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn btn-dark template-part">
+                    <a href="#toggleTemplate3" data-toggle="collapse" class="toggle">
+                        <h2 class="toggle">Side Effects</h2></a>
+                    <div id="toggleTemplate3" class="collapse">
+                        <div class="row template-list">
+                            <div class="col">
+                                <i class="fas fa-minus fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <h3>Pain</h3>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="row template-list">
+                            <div class="col">
+                                <i class="fas fa-minus fa-2x"></i>
+                            </div>
+                            <div class="col">
+                                <h3>Blood Clots</h3>
+                            </div>
+                            <div class="col">
+                                <i class="fas fa-edit fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-ins">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button class="btn btn-dark"><i class="fas fa-plus add"></i></button>
+                    </div>
+                    <div class="col">
+                        <h1>Add a Section</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#checklistModal"><i class="fas fa-plus add"></i></button>
+                    </div>
+                    <div class="col">
+                        <h1>Add a Checklist</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#medicationModal"><i class="fas fa-plus add"></i></button>
+                    </div>
+                    <div class="col">
+                        <h1>Add a Medication</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <button class="btn btn-dark" data-toggle="modal" data-target="#sideEffectModal"><i class="fas fa-plus add"></i></button>
+                    </div>
+                    <div class="col">
+                        <h1>Add a Side Effect</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
