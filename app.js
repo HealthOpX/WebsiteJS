@@ -7,7 +7,7 @@ var express = require('express')
   , mysql = require('mysql')
   , bodyParser = require('body-parser')
   , CognitoExpress = require("cognito-express")
-  , cookieParser = require('cookie-parser');
+  , CookieParser = require('cookie-parser');
 
 // Express instance managing the backend!
 var app = express();
@@ -48,6 +48,7 @@ aws.config.update({region: 'us-east-1'})
 
 
 app.use('/', routes);
+app.use(express.cookieParser());
 
 
 // Function to sign up new user!
