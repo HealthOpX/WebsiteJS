@@ -45,6 +45,9 @@ router.get('/patient.html', function (req, res)
 {
   console.log('Accessed the patient patient.html page!');
   console.log('req.query.code: ', req.query.code);
+  
+  // Variable that will hold the id_token
+  var id = ''; 
 
   // all the data needed for the post request to get the jwt
   var form = 
@@ -72,7 +75,8 @@ router.get('/patient.html', function (req, res)
     function (err, res, body) 
     {
         console.log('Sucessful Post Request From API');
-        console.log('body:\n', body);
+        console.log('id_token:', body['id_token']);
+        console.log('id_token:', body.id_token);
   });
 
 
