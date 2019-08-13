@@ -71,15 +71,13 @@ router.get('/patient.html', function (req, res)
       body: formData,
       method: 'POST'
     }, 
-    function (err, res, body) 
+    function (err, ress, body) 
     {
       var json = JSON.parse(body);
       id = json['id_token'];
-
+      console.log('*id: ', id);
+      res.render(priDir + "patient.html");
   });
-
-  console.log('*id: ', id);
-  res.render(priDir + "patient.html");
 });
 //Code to return patient profile page!
 router.get('/patient-profile.html', function (req, res) 
