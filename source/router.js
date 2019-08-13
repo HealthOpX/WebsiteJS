@@ -49,8 +49,8 @@ router.get('/patient.html', function (req, res)
   // all the data needed for the post request to get the jwt
   var form = 
   {
-    grant_type: 'usr',
-    client_id: 'pwd',
+    grant_type: 'authorization_code',
+    client_id: '2l7p6u93r60avs9fko3aorm1s6',
     code: req.query.code,
     redirect_uri: 'https://www.healthopx.com/patient.html',
     client_secret: '1sk4btg41ce58tav4gblrj3dfcu920r5euduvit469rfaquppan1'
@@ -72,8 +72,7 @@ router.get('/patient.html', function (req, res)
     function (err, res, body) 
     {
         console.log('Sucessful Post Request From API');
-        console.log(res);
-        console.log(body);
+        console.log('body:\n', body);
   });
 
 
