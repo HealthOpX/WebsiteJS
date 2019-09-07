@@ -40,6 +40,11 @@ db.connect(function(err) {
   if (err) 
   {
     console.error('Database connection failed: ' + err.stack);
+    console.log('process.env.RDS_HOSTNAME' + process.env.RDS_HOSTNAME);
+    console.log('process.env.RDS_USERNAME' + process.env.RDS_USERNAME);
+    console.log('process.env.RDS_PASSWORD' + process.env.RDS_PASSWORD);
+    console.log('process.env.RDS_PORT' + process.env.RDS_PORT);
+    console.log('process.env.RDS_DB_NAME' + process.env.RDS_DB_NAME);
     console.error('***Error in BE***');
     return;
   }
