@@ -77,7 +77,7 @@ app.post('/api/new-patient', function(req, res) {
   });
   console.log('***/api/new-patient ERROR***')
   return res.send('DB not connected');
-})
+});
 
 var port = process.env.PORT || 3000;
 
