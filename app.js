@@ -29,7 +29,7 @@ aws.config.update({region: 'us-east-1'})
 
 var db = mysql.createConnection(
 {
-  host     : process.env.RDS_HOSTNAME,
+  host     : "hox-db.cr7d76ixbcim.us-east-1.rds.amazonaws.com",
   user     : process.env.RDS_USERNAME ,
   password : process.env.RDS_PASSWORD,
   port     : process.env.RDS_PORT,
