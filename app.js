@@ -45,7 +45,7 @@ db.connect(function(err) {
     console.log('process.env.RDS_PASSWORD: ' + process.env.RDS_PASSWORD);
     console.log('process.env.RDS_PORT: ' + process.env.RDS_PORT);
     console.log('process.env.RDS_DB_NAME: ' + process.env.RDS_DB_NAME);
-    console.error('^Error in BE^');
+    console.error('^^Error in BE^^');
     return;
   }
   console.log('Connected to database.');
