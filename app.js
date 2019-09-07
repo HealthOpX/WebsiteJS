@@ -27,27 +27,51 @@ aws.config.update({region: 'us-east-1'})
 
 // Connection` to the database!
 
-// var connection = mysql.createConnection(
-// {
-//   host     : process.env.RDS_HOSTNAME,
-//   user     : process.env.RDS_USERNAME ,
-//   password : process.env.RDS_PASSWORD,
-//   port     : process.env.RDS_PORT,
-//   database : process.env.RDS_DB_NAME
-// });
+var db = mysql.createConnection(
+{
+  host     : process.env.RDS_HOSTNAME,
+  user     : process.env.RDS_USERNAME ,
+  password : process.env.RDS_PASSWORD,
+  port     : process.env.RDS_PORT,
+  database : process.env.RDS_DB_NAME
+});
 
-// connection.connect(function(err) {
-//   if (err) 
-//   {
-//     console.error('Database connection failed: ' + err.stack);
-//     console.error('***Error in BE***');
-//     return;
-//   }
-//   console.log('Connected to database.');
-// });
+db.connect(function(err) {
+  if (err) 
+  {
+    console.error('Database connection failed: ' + err.stack);
+    console.error('***Error in BE***');
+    return;
+  }
+  console.log('Connected to database.');
+});
 
 
 app.use('/', routes);
+
+///< This recieved POST request will check to see if there phone number has been used
+app.post('/api/new-patient', function(req, res) {
+  console.log('new-patient-check POST RECIVED');
+
+  // Grab the user phone number to see if patient is new new 
+  var phone = req.body.phone;
+  var query = 'SELECT email FROM patients WHERE phone = ' + phone;
+  console.log('qurry: ' + query);
+
+  // Check to see if number exists in the db
+  db.query(query, [], function(err, rows, fields) {
+    if(err) {throw err;}
+
+    // If new new
+    if(rows.length == 0) {
+      return res.send('1');
+    }
+    else {
+      return res.send('0');
+    }
+  });
+  console.log('***/api/new-patient ERROR***')
+})
 
 var port = process.env.PORT || 3000;
 
