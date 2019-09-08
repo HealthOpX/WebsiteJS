@@ -9,20 +9,8 @@ var express = require('express')
   , CognitoExpress = require("cognito-express")
   , CookieParser = require('cookie-parser');
 
-// Express instance managing the backend!
-var app = express();
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended : true}));
-app.use(bodyParser.json());
-app.use(CookieParser());
-
 
 var routes = require('./source/router');
-
-
 aws.config.update({region: 'us-east-1'})
 
 // Connection` to the database!
@@ -54,6 +42,16 @@ db.connect(function(err) {
 
 app.use('/', routes);
 
+// Express instance managing the backend!
+var app = express();
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
+app.use(CookieParser());
+
 ///< This recieved POST request will check to see if there phone number has been used
 app.post('/api/new-patient', function(req, res) {
   console.log('new-patient-check POST RECIVED');
@@ -62,6 +60,14 @@ app.post('/api/new-patient', function(req, res) {
   var phone = req.body.phone;
   var query = 'SELECT email FROM patients WHERE phone = ' + phone;
   console.log('qurry: ' + query);
+
+  db.connect(function(err) {
+    if (err) 
+    {
+      console.error('Error in /api/new-patient db.connect');
+    }
+    console.log('Connected to database in /api/new-patient.');
+  });
 
   // Check to see if number exists in the db
   db.query(query, [], function(err, rows, fields) {
