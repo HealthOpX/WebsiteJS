@@ -57,6 +57,16 @@ app.post('/api/new-patient', function(req, res) {
   var query = 'SELECT email FROM patients WHERE phone = ' + phone;
   console.log('qurry: ' + query);
 
+  // Connection to the database!
+var db = mysql.createConnection(
+  {
+    host     : "hox-db.cr7d76ixbcim.us-east-1.rds.amazonaws.com",
+    user     : process.env.RDS_USERNAME ,
+    password : process.env.RDS_PASSWORD,
+    port     : process.env.RDS_PORT,
+    database : process.env.RDS_DB_NAME
+  });
+
   db.connect(function(err) {
     if (err) 
     {
