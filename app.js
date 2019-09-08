@@ -81,14 +81,17 @@ var db = mysql.createConnection(
 
     // If new new
     if(rows.length == 0) {
-      return res.send('1');
+      res.send('1');
+      console.log('/api/new-patient: There were no matches!')
+      return;
     }
     else {
-      return res.send('0');
+      res.send('0');
+      console.log('/api/new-patient: There was a match!')
+      return;
     }
   });
   console.log('***/api/new-patient ERROR***')
-  return res.send('DB not connected');
 });
 
 var port = process.env.PORT || 3000;
