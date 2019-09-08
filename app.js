@@ -1,5 +1,6 @@
 //< General app to handle all the back end of the site!
   
+var routes = require('./source/router');
 var express = require('express')
   , http = require('https')
   , path = require('path')
@@ -9,12 +10,9 @@ var express = require('express')
   , CognitoExpress = require("cognito-express")
   , CookieParser = require('cookie-parser');
 
-
-var routes = require('./source/router');
 aws.config.update({region: 'us-east-1'})
 
-// Connection` to the database!
-
+// Connection to the database!
 var db = mysql.createConnection(
 {
   host     : "hox-db.cr7d76ixbcim.us-east-1.rds.amazonaws.com",
@@ -39,9 +37,6 @@ db.connect(function(err) {
   console.log('Connected to database.');
 });
 
-
-app.use('/', routes);
-
 // Express instance managing the backend!
 var app = express();
 app.set('views', __dirname + '/views');
@@ -51,6 +46,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(CookieParser());
+app.use('/', routes);
 
 ///< This recieved POST request will check to see if there phone number has been used
 app.post('/api/new-patient', function(req, res) {
