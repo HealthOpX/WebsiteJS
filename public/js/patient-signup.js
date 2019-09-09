@@ -70,6 +70,6 @@ SignUpUser = function() {
   }
 
   // Send api request to set new id for new register user!
-
+  alert('you hit the js');
   return;
 }
