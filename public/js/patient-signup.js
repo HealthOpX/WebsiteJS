@@ -1,12 +1,12 @@
-const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-const AWS = require('aws-sdk');
-const request = require('request');
-const jwkToPem = require('jwk-to-pem');
-const jwt = require('jsonwebtoken');
-var querystring = require('querystring');
+// const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+// const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+// const AWS = require('aws-sdk');
+// const request = require('request');
+// const jwkToPem = require('jwk-to-pem');
+// const jwt = require('jsonwebtoken');
+// var querystring = require('querystring');
 
-global.fetch = require('node-fetch');
+// global.fetch = require('node-fetch');
 
 const poolData = {    
   UserPoolId : "us-east-1_GLI7YUQ7p",  
