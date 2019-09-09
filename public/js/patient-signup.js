@@ -15,8 +15,7 @@ const poolData = {
 const pool_region = 'us-east-1';
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-function SignUpUser()
-{
+SignUpUser = function() {
   console.log('begining to sign up a user!');
   
   // Initialize all variables needed to sign up new user
