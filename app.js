@@ -40,6 +40,7 @@ db.connect(function(err) {
 // Express instance managing the backend!
 var app = express();
 app.set('views', __dirname + '/views');
+app.set('source', __dirname + '/source');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static('public'));
