@@ -13,7 +13,7 @@ const poolData = {
   ClientId : "7t72cpc6ca0da3a84lcm367248" 
   }; 
 const pool_region = 'us-east-1';
-const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+// const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 SignUpUser = function() {
   console.log('begining to sign up a user!');
@@ -54,14 +54,14 @@ SignUpUser = function() {
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value: email}));
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"phone_number",Value: number}));
 
-    userPool.signUp(email, pass, attributeList, null, function(err, result){
-        if (err) {
-            console.log(err);
-            return;
-        }
-        cognitoUser = result.user;
-        console.log('user name is ' + cognitoUser.getUsername());
-    });
+    // userPool.signUp(email, pass, attributeList, null, function(err, result){
+    //     if (err) {
+    //         console.log(err);
+    //         return;
+    //     }
+    //     cognitoUser = result.user;
+    //     console.log('user name is ' + cognitoUser.getUsername());
+    // });
   }
   // Else say the number has already been used
   else {
