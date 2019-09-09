@@ -4,16 +4,21 @@ const AWS = require('aws-sdk');
 const request = require('request');
 const jwkToPem = require('jwk-to-pem');
 const jwt = require('jsonwebtoken');
+var request = require('request');
+var querystring = require('querystring');
+
 global.fetch = require('node-fetch');
 
 const poolData = {    
-  UserPoolId : "us-east-1_LmtX2y4BH",  
-  ClientId : "2l7p6u93r60avs9fko3aorm1s6" 
+  UserPoolId : "us-east-1_GLI7YUQ7p",  
+  ClientId : "7t72cpc6ca0da3a84lcm367248" 
   }; 
 const pool_region = 'us-east-1';
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-function SignUpUser(){
+function SignUpUser()
+{
+  console.log('begining to sign up a user!');
   
   // Initialize all variables needed to sign up new user
   var attributeList = [];
@@ -23,23 +28,35 @@ function SignUpUser(){
   var number = document.getElementById("number").value;
   var address = document.getElementById("address").value;
   var pass = document.getElementById("pass").value;
+  var sex = document.getElementById("sex").value;
+  var bday = document.getElementById("bday").value;
   var seen = false;
 
-  // Send a api post request to server to see if phone number has been seen before
+  request.post({
+    url:     'https://healthopx-lb-1708489658.us-east-1.elb.amazonaws.com/api/new-patient',
+    body:    { phone: number }
+  }, function(error, response, body){
+
+    if(error) {
+      console.log(error);
+      return;
+    }
+    console.log('body:\n');
+    console.log(body);
+  });
 
   // If not seen before register the user
 
   if (seen) {
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value:"Prasad Jayashanka"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"preferred_username",Value:"jay"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"gender",Value:"male"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"birthdate",Value:"1991-06-21"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"address",Value:"CMB"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value:"sampleEmail@gmail.com"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"phone_number",Value:"+5412614324321"}));
-    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:scope",Value:"admin"}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:FirstName",Value: fname}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:LastName",Value: lname}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"gender",Value: sex}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"birthdate",Value: bday}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"address",Value: address}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value: email}));
+    attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"phone_number",Value: number}));
 
-    userPool.signUp('sampleEmail@gmail.com', 'SamplePassword123', attributeList, null, function(err, result){
+    userPool.signUp(email, pass, attributeList, null, function(err, result){
         if (err) {
             console.log(err);
             return;
@@ -51,6 +68,7 @@ function SignUpUser(){
   // Else say the number has already been used
   else {
     // Output Error saying that this number is already used!
+    console.log('This user has been seen before!');
   }
 
   // Send api request to set new id for new register user!
