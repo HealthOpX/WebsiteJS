@@ -28,7 +28,7 @@ SignUpUser = function() {
   var pass = document.getElementById("pass").value;
   var sex = document.getElementById("sex").value;
   var bday = document.getElementById("bday").value;
-  var seen = false;
+  var seen = false;  
 
   request.post({
     url:     'https://healthopx-lb-1708489658.us-east-1.elb.amazonaws.com/api/new-patient',
