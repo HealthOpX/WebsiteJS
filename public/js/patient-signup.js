@@ -42,21 +42,6 @@ SignUpUser = function() {
     )
   });
 
-
-
-  request.post({
-    ,
-    body:    { phone: number }
-  }, function(error, response, body){
-
-    if(error) {
-      console.log(error);
-      return;
-    }
-    console.log('body:\n');
-    console.log(body);
-  });
-
   // If not seen before register the user
 
   if (seen) {
