@@ -57,24 +57,6 @@ app.post('/api/new-patient', function(req, res) {
   var query = 'SELECT email FROM patients WHERE phone = ' + phone;
   console.log('qurry: ' + query);
 
-  // Connection to the database!
-// var db = mysql.createConnection(
-//   {
-//     host     : "hox-db.cr7d76ixbcim.us-east-1.rds.amazonaws.com",
-//     user     : process.env.RDS_USERNAME ,
-//     password : process.env.RDS_PASSWORD,
-//     port     : process.env.RDS_PORT,
-//     database : process.env.RDS_DB_NAME
-//   });
-
-//   db.connect(function(err) {
-//     if (err) 
-//     {
-//       console.error('Error in /api/new-patient db.connect');
-//     }
-//     console.log('Connected to database in /api/new-patient.');
-//   });
-
   // Check to see if number exists in the db
   db.query(query, [], function(err, rows, fields) {
     if(err) {throw err;}
@@ -91,7 +73,6 @@ app.post('/api/new-patient', function(req, res) {
       return;
     }
   });
-  console.log('***/api/new-patient ERROR***')
 });
 
 var port = process.env.PORT || 3000;
