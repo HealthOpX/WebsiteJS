@@ -4,7 +4,6 @@ const AWS = require('aws-sdk');
 const request = require('request');
 const jwkToPem = require('jwk-to-pem');
 const jwt = require('jsonwebtoken');
-var request = require('request');
 var querystring = require('querystring');
 
 global.fetch = require('node-fetch');
