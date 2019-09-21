@@ -37,6 +37,14 @@ db.connect(function(err) {
   console.log('Connected to database.');
 });
 
+///< Setting up the Cognito Express variable!
+const cogPatients = new CognitoExpress({
+  region: "us-east-1",
+  cognitoUserPoolId: "us-east-1_GLI7YUQ7p",
+  tokenUse: "id", //Possible Values: access | id
+  tokenExpiration: 3600000 //Up to default expiration of 1 hour (3600000 ms)
+});
+
 // Express instance managing the backend!
 var app = express();
 app.set('views', __dirname + '/views');
@@ -75,6 +83,12 @@ app.post('/api/new-patient', function(req, res) {
     }
   });
 });
+
+app.post('/api/patient-info', function(req, res) { 
+  console.log('Grabbing patient info');
+  console.log('Cookies:', req.cookies['HOX-PATIENT-VER']);
+
+})
 
 var port = process.env.PORT || 3000;
 
