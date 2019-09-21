@@ -88,6 +88,7 @@ app.post('/api/patient-info', function(req, res) {
   console.log('Grabbing patient info');
   console.log('Cookies:', req.cookies['HOX-PATIENT-VER']);
 
+  res.send('patient-info');
 })
 
 var port = process.env.PORT || 3000;
