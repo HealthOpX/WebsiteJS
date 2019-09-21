@@ -87,8 +87,18 @@ app.post('/api/new-patient', function(req, res) {
 app.post('/api/patient-info', function(req, res) { 
   console.log('Grabbing patient info');
   console.log('Cookies:', req.cookies['HOX-PATIENT-VER']);
+  let token = req.cookies['HOX-PATIENT-VER'];
 
-  res.send('patient-info');
+  if(!token) { return res.status(401).send("Access Token Missing");}
+
+  cogPatients.validate(token, function(err, response) {
+
+    if(err) { return res.status(401).send(err);}
+
+    console.log('response: ', response);
+    return;
+  });
+  console.log('patient-info');
 })
 
 var port = process.env.PORT || 3000;
