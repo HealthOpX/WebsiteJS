@@ -52,10 +52,10 @@ router.get('/patient.html', function (req, res)
   var form = 
   {
     grant_type: 'authorization_code',
-    client_id: '2l7p6u93r60avs9fko3aorm1s6',
+    client_id: '7t72cpc6ca0da3a84lcm367248',
     code: req.query.code,
-    redirect_uri: 'https://www.healthopx.com/patient.html',
-    client_secret: '1sk4btg41ce58tav4gblrj3dfcu920r5euduvit469rfaquppan1'
+    redirect_uri: 'https://healthopx-lb-1708489658.us-east-1.elb.amazonaws.com/patient.html',
+    client_secret: 'av7cdhub82h1dkfdjotp8er7rf6dh6oqjr1b5ndibp11ismsf6l'
   };
   var formData = querystring.stringify(form);
   var contentLength = formData.length;
@@ -67,14 +67,14 @@ router.get('/patient.html', function (req, res)
         'Content-Length': contentLength,
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      uri: 'https://healthopx-patients.auth.us-east-1.amazoncognito.com/oauth2/token',
+      uri: 'https://hox-patients.auth.us-east-1.amazoncognito.com/oauth2/token',
       body: formData,
       method: 'POST'
     }, 
     function (err, ress, body) 
     {
       var json = JSON.parse(body);
-
+      console.log('*json:', json);
       console.log('*id: ', json['id_token']);
       res.cookie('HOX-PATIENT-VER', json['id_token']);
       res.render(priDir + "patient.html");
