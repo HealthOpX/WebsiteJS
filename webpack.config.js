@@ -3,7 +3,7 @@ module.exports = {
 	// The entry module that requires or imports the rest of your project.
 	// Must start with `./`!
   entry: './source/patient-signup.js',
-  entry: './source/patient-login.js',
+  entry: './public/js/patient-signup.js',
 	// Place output files in `./dist/my-app.js`
 	output: {
 		path: __dirname + '/dist',
