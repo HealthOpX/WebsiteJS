@@ -1,38 +1,28 @@
-  //< General app to handle all the back end of the site!
+//< General app to handle all the back end of the site!
   
+var routes = require('./source/router');
 var express = require('express')
-  , http = require('http')
+  , http = require('https')
   , path = require('path')
   , aws = require('aws-sdk')
   , mysql = require('mysql')
-  , bodyParser = require('body-parser');
+  , bodyParser = require('body-parser')
+  , CognitoExpress = require("cognito-express")
+  , CookieParser = require('cookie-parser');
 
-// Express instance managing the backend!
-var app = express();
-var routes = require('./source/router');
-
-var publicDir = require('path').join(__dirname,'views/public');
-var privateDir = require('path').join(__dirname,'views/private');
-
-//configurations?
-aws.config.update({region: 'us-east-2	'})
-app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended : true}));
-app.use(bodyParser.json());
+aws.config.update({region: 'us-east-1'})
 
 // Connection to the database!
-var connection = mysql.createConnection(
+var db = mysql.createConnection(
 {
-  host     : process.env.RDS_HOSTNAME,
+  host     : "hox-db.cr7d76ixbcim.us-east-1.rds.amazonaws.com",
   user     : process.env.RDS_USERNAME ,
   password : process.env.RDS_PASSWORD,
   port     : process.env.RDS_PORT,
   database : process.env.RDS_DB_NAME
 });
 
+<<<<<<< HEAD
 connection.connect(function(err) 
 {
   console.log(process.env.RDS_HOSTNAME);
@@ -47,175 +37,86 @@ connection.connect(function(err)
   {
     console.error('Database connection failed: ' + err.stack);
     console.error('***Failed in Master***');
+=======
+db.connect(function(err) {
+  if (err) 
+  {
+    console.error('Database connection failed: ' + err.stack);
+    console.log('process.env.RDS_HOSTNAME: ' + process.env.RDS_HOSTNAME);
+    console.log('process.env.RDS_USERNAME: ' + process.env.RDS_USERNAME);
+    console.log('process.env.RDS_PASSWORD: ' + process.env.RDS_PASSWORD);
+    console.log('process.env.RDS_PORT: ' + process.env.RDS_PORT);
+    console.log('process.env.RDS_DB_NAME: ' + process.env.RDS_DB_NAME);
+    console.error('^^Error in BE^^');
+>>>>>>> BE
     return;
   }
   console.log('Connected to database.');
 });
 
+///< Setting up the Cognito Express variable!
+const cogPatients = new CognitoExpress({
+  region: "us-east-1",
+  cognitoUserPoolId: "us-east-1_GLI7YUQ7p",
+  tokenUse: "id", //Possible Values: access | id
+  tokenExpiration: 3600000 //Up to default expiration of 1 hour (3600000 ms)
+});
 
+// Express instance managing the backend!
+var app = express();
+app.set('views', __dirname + '/views');
+app.set('source', __dirname + '/source');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
+app.use(CookieParser());
 app.use('/', routes);
 
+///< This recieved POST request will check to see if there phone number has been used
+app.post('/api/new-patient', function(req, res) {
+  console.log('new-patient-check POST RECIVED');
 
-// Function to sign up new user!
-// If user exists, will prompt user to enter new email
-// If user is new, will be redirected into the sign in page
-app.post('/signup', function(req, res)
-{
-  // Output stuff for local debugging if possible
-  console.log(req);
-  console.log(req.body);
-  console.log();
-  console.log(res.body);
+  // Grab the user phone number to see if patient is new new 
+  var phone = req.body.phone;
+  var query = 'SELECT email FROM patients WHERE phone = ' + phone;
+  console.log('qurry: ' + query);
 
-  // Variables that to access html form input!
-  var f_name = req.body.fname;
-  var l_name = req.body.lname;
-  var email = req.body.email;
-  var pw = req.body.pass;
+  // Check to see if number exists in the db
+  db.query(query, [], function(err, rows, fields) {
+    if(err) {throw err;}
 
-  var query_str = 'SELECT * FROM users WHERE u_email = ?';
-
-  connection.query(query_str, [email], function(error, results, fields)
-  {
-    if(error) 
-    {
-      console.log("Error during database query. (/signup)")
-      throw error;
-    }
-
-    else
-    {
-      console.log("Sucess during database query. (/signup)")
-    }
-
-    // Debugging to hit the DB and get users with similar emails
-    console.log("Number of rows for query: " + results.length);
-    console.log("QUERY: SELECT * FROM users WHERE u_email = " + email);
-
-    if(results.length == 0)
-    {
-      var insert_qry = 'INSERT INTO users (u_email, u_fname, u_lname, u_pw) VALUES (?, ?, ?, ?)';
-      connection.query(insert_qry, [email, f_name, l_name, pw], function(error, results, fields)
-      {
-        if(error)
-        {
-          console.log("Error adding new user to table");
-          throw error;
-        }
-
-        console.log(f_name + " " + l_name + " has been successfully added!");    
-        res.render('signin.html', {rows: 1});
-      });
-    }
-
-    else
-    {
-      console.log(email + " already exists as a user!");   
-      res.render('signup.html', {rows: results.length, message: 'Email already in use, please use a different one! :('});
-    }
-  });
-});
-
-app.post('/signin', function(req, res)
-{
-  console.log("*signin*: " + req);
-  console.log('hello world');
-  console.log(req.body);
-  console.log();
-  console.log(res.body);
-
-
-  var name = req.body.name;
-  var pw = req.body.pw;
-  var query_str = 'SELECT u_pw FROM users WHERE u_email = ?';
-
-  connection.query(query_str, [name], function(error, results, fields)
-  {
-    if(error)
-    {
-      console.log("Error during db query. (/signin)");
-      throw error;
-    }
-
-    console.log("Number of rows for query: ", results.length);
-    console.log("Results: ");
-    console.log(results);
-    console.log(results[0]);
-    console.log(results[0]['u_pw']);
-    console.log('SELECT u_pw FROM u_basic WHERE u_email = ' + name);
-
-    if(results.length == 0)
-    {
-      console.log("No accounts were found with corresponding email!");
-      res.render('signin.html', {rows: results.length, message: 'No accounts were found with corresponding email!'});
-      return; 
-    }
-
-    if(pw == results[0]['u_pw'])
-    {
-      console.log('Succesful login!');
-      res.render('patient-profile.html');
+    // If new new
+    if(rows.length == 0) {
+      res.send('1');
+      console.log('/api/new-patient: There were no matches!')
       return;
     }
-
-    else
-    {
-      console.log("Credentials not found, please try again!");
-      res.render('signin.html', {rows: 0, message: 'No accounts were found with corresponding credentials!'});
+    else {
+      res.send('0');
+      console.log('/api/new-patient: There was a match!')
       return;
     }
   });
 });
 
-app.get('/email', function (req, res) 
-{
-  // Create sendEmail params 
-  var params = 
-  {
-    Destination: { /* required */
-      CcAddresses: [
-        'EMAIL_ADDRESS',
-        /* more items */
-      ],
-      ToAddresses: [
-        'EMAIL_ADDRESS',
-        /* more items */
-      ]
-    },
-    Message: { /* required */
-      Body: { /* required */
-        Html: {
-        Charset: "UTF-8",
-        Data: "HTML_FORMAT_BODY"
-        },
-        Text: {
-        Charset: "UTF-8",
-        Data: "TEXT_FORMAT_BODY"
-        }
-      },
-      Subject: {
-        Charset: 'UTF-8',
-        Data: 'Test email'
-      }
-      },
-    Source: 'SENDER_EMAIL_ADDRESS', /* required */
-    ReplyToAddresses: [
-      'EMAIL_ADDRESS',
-      /* more items */
-    ],
-};
-// Create the promise and SES service object
-var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+app.post('/api/patient-info', function(req, res) { 
+  console.log('Grabbing patient info');
+  console.log('Cookies:', req.cookies['HOX-PATIENT-VER']);
+  let token = req.cookies['HOX-PATIENT-VER'];
 
-// Handle promise's fulfilled/rejected states
-sendPromise.then(
-  function(data) {
-    console.log(data.MessageId);
-  }).catch(
-    function(err) {
-    console.error(err, err.stack);
-  });  
-});
+  if(!token) { return res.status(401).send("Access Token Missing");}
+
+  cogPatients.validate(token, function(err, response) {
+
+    if(err) { return res.status(401).send(err);}
+
+    console.log('response: ', response);
+    return;
+  });
+  console.log('patient-info');
+})
 
 var port = process.env.PORT || 3000;
 
@@ -224,9 +125,6 @@ var server = app.listen(port, function () {
     console.log('Server running at http://127.0.0.1:' + port + '/');
 });
 
-// https://stackoverflow.com/questions/20089582/how-to-get-a-url-parameter-in-express
 
-// arn:aws:iam::734985897378:role/service-role/patient-SMS-Role
-
-
-// Hello World
+// The link bellow is to access hox patient logins
+// https://hox-patients.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=7t72cpc6ca0da3a84lcm367248&redirect_uri=https://healthopx-lb-1708489658.us-east-1.elb.amazonaws.com/patient.html&state=STATE
