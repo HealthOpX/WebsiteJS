@@ -16,28 +16,12 @@ aws.config.update({region: 'us-east-1'})
 var db = mysql.createConnection(
 {
   host     : "hox-db.cr7d76ixbcim.us-east-1.rds.amazonaws.com",
-  user     : process.env.RDS_USERNAME ,
+  user     : process.env.RDS_USERNAME,
   password : process.env.RDS_PASSWORD,
   port     : process.env.RDS_PORT,
   database : process.env.RDS_DB_NAME
 });
 
-<<<<<<< HEAD
-connection.connect(function(err) 
-{
-  console.log(process.env.RDS_HOSTNAME);
-  console.log(process.env.RDS_USERNAME);
-  console.log(process.env.RDS_PASSWORD);
-  console.log(process.env.RDS_PORT);
-  console.log(process.env.RDS_DB_NAME);
-
-
-
-  if (err) 
-  {
-    console.error('Database connection failed: ' + err.stack);
-    console.error('***Failed in Master***');
-=======
 db.connect(function(err) {
   if (err) 
   {
@@ -48,7 +32,6 @@ db.connect(function(err) {
     console.log('process.env.RDS_PORT: ' + process.env.RDS_PORT);
     console.log('process.env.RDS_DB_NAME: ' + process.env.RDS_DB_NAME);
     console.error('^^Error in BE^^');
->>>>>>> BE
     return;
   }
   console.log('Connected to database.');
