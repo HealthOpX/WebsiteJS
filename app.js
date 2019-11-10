@@ -110,7 +110,7 @@ app.post('/api/patient-att-update', function(req, res) {
   };
 
   var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authData);
-  var poolData = { UserPoolId : ' us-east-1_LmtX2y4BH',
+  var poolData = { UserPoolId : 'us-east-1_LmtX2y4BH',
         ClientId : '2l7p6u93r60avs9fko3aorm1s6'
       };
   var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
