@@ -107,6 +107,9 @@ app.post('/api/patient-att-update', function(req, res) {
   console.log('un-', req.body.name);
   console.log('pw-', req.body.pw);
 
+  console.log('tun-', typeof req.body.name);
+  console.log('tpw-', typeof req.body.pw);
+
   var username = req.body.name;
   var password = req.body.pw;
 
