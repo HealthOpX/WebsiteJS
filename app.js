@@ -136,11 +136,12 @@ app.post('/api/patient-att-update', function(req, res) {
       /* Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
       var idToken = result.idToken.jwtToken;
       console.log('/api/patient-att-update - Authentification PASS');
+      return 1;
     },
 
     onFailure: function(err) {
       console.log('/api/patient-att-update - Authentification FAIL');
-      alert(err);
+      return 0;
     },
   });
 
