@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/node": "^12.6.8",
     "async": "3.0.0",
-    "aws-sdk": "^2.556.0",
+    "aws-sdk": "^2.568.0",
     "browser-sync": "^2.26.7",
     "cognito-express": "^2.0.16",
     "connect-browser-sync": "^2.1.0",
