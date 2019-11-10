@@ -104,6 +104,9 @@ app.post('/api/patient-info', function(req, res) {
 // Cognito setting for patient allows email to be the username
 app.post('/api/patient-att-update', function(req, res) {
   console.log('/api/patient-att-update POST RECIVED');
+  console.log('un-', req.body.name);
+  console.log('pw-', req.body.pw);
+
   var username = req.body.name;
   var password = req.body.pw;
 
