@@ -1,5 +1,6 @@
 //< General app to handle all the back end of the site!
 
+var fetch = require("node-fetch");
 var routes = require('./source/router');
 var express = require('express')
 var http = require('https');
@@ -10,7 +11,6 @@ var bodyParser = require('body-parser');
 var CognitoExpress = require("cognito-express");
 var CookieParser = require('cookie-parser');
 var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-var fetch = require("node-fetch");
 
 aws.config.update({region: 'us-east-1'});
 
