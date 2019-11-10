@@ -141,7 +141,8 @@ app.post('/api/patient-att-update', function(req, res) {
 
     onFailure: function(err) {
       console.log('/api/patient-att-update - Authentification FAIL');
-      return 0;
+      console.log(err);
+      return res.status(401).send(err);
     },
   });
 
