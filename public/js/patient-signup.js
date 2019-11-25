@@ -1,11 +1,12 @@
 // const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 // const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 // const request = require('request');
-// global.fetch = require('node-fetch');
 
 // Modules, e.g. Webpack:
 var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+global.fetch = require('node-fetch');
+
 
 function Click() {
   // Create all the required cognito stuff
