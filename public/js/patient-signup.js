@@ -1,10 +1,11 @@
-const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-const AWS = require('aws-sdk');
-const request = require('request');
-const jwkToPem = require('jwk-to-pem');
-const jwt = require('jsonwebtoken');
-global.fetch = require('node-fetch');
+// const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+// const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+// const request = require('request');
+// global.fetch = require('node-fetch');
+
+// Modules, e.g. Webpack:
+var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
 
 function Click() {
   // Create all the required cognito stuff
@@ -39,12 +40,12 @@ function Click() {
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value: email}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"phone_number",Value: number}));
 
-  userPool.signUp(email, pass, attributeList, null, function(err, result){
+  userPool.signUp(email, pass, attributeList, null, function(err, result) {
     if (err) {
-      console.log(err);
+      alert(err.message || JSON.stringify(err));
       return;
     }
-    cognitoUser = result.user;
+    var cognitoUser = result.user;
     console.log('user name is ' + cognitoUser.getUsername());
   });
 }

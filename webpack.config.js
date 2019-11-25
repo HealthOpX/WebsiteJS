@@ -2,7 +2,6 @@ module.exports = {
 	// Example setup for your project:
 	// The entry module that requires or imports the rest of your project.
 	// Must start with `./`!
-  entry: './source/patient-signup.js',
   entry: './public/js/patient-signup.js',
 	// Place output files in `./dist/my-app.js`
 	output: {
