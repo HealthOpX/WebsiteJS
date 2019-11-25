@@ -158,4 +158,4 @@ var server = app.listen(port, function () {
 
 
 // The link bellow is to access hox patient logins
-//  https://healthopx-patients.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=2l7p6u93r60avs9fko3aorm1s6&redirect_uri=https://healthopx-lb-1708489658.us-east-1.elb.amazonaws.com/patient.html
+// https://hox-patients.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=2t2aqjeiarr9eeuueargb1hfrt&redirect_uri=https://healthopx-lb-1708489658.us-east-1.elb.amazonaws.com/patient.html
