@@ -38,6 +38,9 @@ function Click() {
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"address",Value: address}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"email",Value: email}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"phone_number",Value: number}));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:Role",Value: "patient"}));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"custom:ZipCode",Value: zip}));
+
 
   userPool.signUp(email, pass, attributeList, null, function(err, result) {
     if (err) {
