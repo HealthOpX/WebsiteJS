@@ -31,6 +31,7 @@ function Click() {
 
   var attributeList = [];
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"name",Value: fname}));
+  attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"middle_name",Value: mname}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"family_name",Value: lname}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"gender",Value: sex}));
   attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({Name:"birthdate",Value: bday}));
