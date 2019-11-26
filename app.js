@@ -1,7 +1,7 @@
 //< General app to handle all the back end of the site!
 
 
- global.fetch = require("node-fetch");
+global.fetch = require("node-fetch");
 var routes = require('./source/router');
 var express = require('express')
 var http = require('https');

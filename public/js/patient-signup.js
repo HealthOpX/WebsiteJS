@@ -1,21 +1,18 @@
-// const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-// const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-// const request = require('request');
-
-// Modules, e.g. Webpack:
-var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+console.log(1);
 var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-global.fetch = require('node-fetch');
+console.log(2);
+const poolData = {
+  UserPoolId : "us-east-1_mMql1Iq1E", // Your user pool id here
+  ClientId : "2el3adplalc62tmgi3etgqvj2v" // Your client id here
+};
+console.log(3);
+const pool_region = 'us-east-1';
+console.log(4);
+const userPool = new CognitoUserPool(poolData);
+console.log(5);
 
 
 function Click() {
-  // Create all the required cognito stuff
-  const poolData = {
-    UserPoolId : " us-east-1_mMql1Iq1E", // Your user pool id here
-    ClientId : "2el3adplalc62tmgi3etgqvj2v" // Your client id here
-    };
-  const pool_region = 'us-east-1';
-  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
   // Get user data
   var attributeList = [];
