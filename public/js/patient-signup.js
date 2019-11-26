@@ -49,5 +49,22 @@ function Click() {
     }
     var cognitoUser = result.user;
     console.log('user name is ' + cognitoUser.getUsername());
+
+    var code = prompt("Please enter verification code!");
+    if (code != null) {
+      console.log('code: ' +code);
+
+      cognitoUser.confirmRegistration(code, true, function(err, result) {
+        if (err) {
+          alert(err.message || JSON.stringify(err));
+          return;
+        }
+        console.log('call result: ' + result);
+    });
+
+
+    }
   });
+
+
 }
